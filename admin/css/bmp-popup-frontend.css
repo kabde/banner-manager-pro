@@ -1,0 +1,263 @@
+/* ========================================
+   BMP POPUP FRONTEND STYLES
+   ======================================== */
+
+/* ── Overlay (center position only) ── */
+.bmp-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 99997;
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+.bmp-popup-overlay.is-visible {
+    opacity: 1;
+}
+
+/* ── Base popup ── */
+.bmp-popup {
+    position: fixed;
+    z-index: 99998;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.bmp-popup-inner {
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+}
+
+.bmp-popup-content {
+    width: 100%;
+}
+
+.bmp-popup-content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.bmp-popup-html {
+    padding: 20px;
+}
+
+/* ── Close button ── */
+.bmp-popup-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 22px;
+    line-height: 36px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 200ms, transform 200ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.bmp-popup-close:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+/* ═══════════════════════════════════════
+   POSITION: CENTER (modal)
+   ═══════════════════════════════════════ */
+.bmp-popup-pos-center {
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.bmp-popup-pos-center.is-visible {
+    display: flex;
+}
+.bmp-popup-pos-center .bmp-popup-inner {
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-height: 90vh;
+    overflow-y: auto;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 300ms ease, transform 300ms ease;
+}
+.bmp-popup-pos-center.is-visible .bmp-popup-inner {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Center sizes */
+.bmp-popup-size-small .bmp-popup-inner { max-width: 400px; }
+.bmp-popup-size-medium .bmp-popup-inner { max-width: 600px; }
+.bmp-popup-size-large .bmp-popup-inner { max-width: 800px; }
+.bmp-popup-size-fullscreen { padding: 0; }
+.bmp-popup-size-fullscreen .bmp-popup-inner {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+}
+
+/* ═══════════════════════════════════════
+   POSITION: RIGHT (slide-in panel)
+   ═══════════════════════════════════════ */
+.bmp-popup-pos-right {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 380px;
+    max-width: 100vw;
+}
+.bmp-popup-pos-right .bmp-popup-inner {
+    height: 100%;
+    overflow-y: auto;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    transform: translateX(100%);
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bmp-popup-pos-right.is-visible .bmp-popup-inner {
+    transform: translateX(0);
+}
+
+/* ═══════════════════════════════════════
+   POSITION: LEFT (slide-in panel)
+   ═══════════════════════════════════════ */
+.bmp-popup-pos-left {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 380px;
+    max-width: 100vw;
+}
+.bmp-popup-pos-left .bmp-popup-inner {
+    height: 100%;
+    overflow-y: auto;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+    transform: translateX(-100%);
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bmp-popup-pos-left.is-visible .bmp-popup-inner {
+    transform: translateX(0);
+}
+
+/* ═══════════════════════════════════════
+   POSITION: BOTTOM (notification bar)
+   ═══════════════════════════════════════ */
+.bmp-popup-pos-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.bmp-popup-pos-bottom .bmp-popup-inner {
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(100%);
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bmp-popup-pos-bottom.is-visible .bmp-popup-inner {
+    transform: translateY(0);
+}
+.bmp-popup-pos-bottom .bmp-popup-close {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+}
+.bmp-popup-pos-bottom .bmp-popup-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 50px 12px 16px;
+}
+.bmp-popup-pos-bottom .bmp-popup-content img {
+    max-height: 80px;
+    width: auto;
+}
+
+/* ═══════════════════════════════════════
+   POSITION: TOP (announcement bar)
+   ═══════════════════════════════════════ */
+.bmp-popup-pos-top {
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.bmp-popup-pos-top .bmp-popup-inner {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bmp-popup-pos-top.is-visible .bmp-popup-inner {
+    transform: translateY(0);
+}
+.bmp-popup-pos-top .bmp-popup-close {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+}
+.bmp-popup-pos-top .bmp-popup-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 50px 12px 16px;
+}
+.bmp-popup-pos-top .bmp-popup-content img {
+    max-height: 80px;
+    width: auto;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 768px) {
+    .bmp-popup-pos-right,
+    .bmp-popup-pos-left {
+        width: 100vw;
+    }
+
+    .bmp-popup-pos-center {
+        padding: 10px;
+    }
+    .bmp-popup-size-small .bmp-popup-inner,
+    .bmp-popup-size-medium .bmp-popup-inner,
+    .bmp-popup-size-large .bmp-popup-inner {
+        max-width: 95vw;
+    }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .bmp-popup-overlay,
+    .bmp-popup-inner,
+    .bmp-popup-close {
+        transition: none !important;
+    }
+    .bmp-popup-pos-center .bmp-popup-inner {
+        transform: none;
+    }
+}
+
+/* ── Image styling ── */
+.bmp-popup-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ── Links ── */
+.bmp-popup-content a {
+    display: block;
+    text-decoration: none;
+}
+.bmp-popup-content a:hover {
+    opacity: 0.9;
+}
