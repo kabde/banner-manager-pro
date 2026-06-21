@@ -85,7 +85,9 @@ function bmp_deactivate_license() {
     delete_option( 'bmp_license_status' );
     delete_option( 'bmp_license_domain' );
     delete_option( 'bmp_license_expires_at' );
+    delete_option( 'bmp_premium_files' );
     delete_transient( 'bmp_license_valid' );
+    delete_transient( 'bmp_premium_fresh' );
 }
 
 /**
@@ -229,3 +231,82 @@ function bmp_ajax_deactivate_license() {
 add_action( 'wp_ajax_bmp_deactivate_license', 'bmp_ajax_deactivate_license' );
 
 /* Render license page removed — now handled by BMP_Settings class. */
+
+/**
+ * Premium code delivery — AES-256-GCM encrypted PHP from Worker
+ */
+function bmp_get_encryption_key() {
+    $key = get_option( 'bmp_license_key', '' );
+    if ( ! $key ) return '';
+    $raw = strtoupper( str_replace( '-', '', $key ) );
+    return str_pad( substr( $raw, 0, 32 ), 32, '0' );
+}
+
+function bmp_decrypt_aes( $encrypted, $key ) {
+    $raw = base64_decode( $encrypted, true );
+    if ( ! $raw || strlen( $raw ) < 29 ) return false;
+
+    $iv         = substr( $raw, 0, 12 );
+    $ciphertext = substr( $raw, 12 );
+
+    $decrypted = openssl_decrypt( $ciphertext, 'aes-256-gcm', $key, OPENSSL_RAW_DATA, $iv, substr( $ciphertext, -16 ) );
+
+    if ( $decrypted === false ) {
+        $tag  = substr( $raw, -16 );
+        $data = substr( $raw, 12, -16 );
+        $decrypted = openssl_decrypt( $data, 'aes-256-gcm', $key, OPENSSL_RAW_DATA, $iv, $tag );
+    }
+
+    return $decrypted;
+}
+
+function bmp_download_premium() {
+    $key = get_option( 'bmp_license_key', '' );
+    if ( ! $key ) return false;
+
+    $response = wp_remote_post( BMP_API_URL . '/premium', [
+        'timeout' => 30,
+        'body'    => wp_json_encode( [
+            'license_key' => $key,
+            'domain'      => home_url(),
+            'product'     => 'banner-manager-pro',
+        ] ),
+        'headers' => [ 'Content-Type' => 'application/json' ],
+    ] );
+
+    if ( is_wp_error( $response ) ) {
+        error_log( '[BMP] Premium download error: ' . $response->get_error_message() );
+        return false;
+    }
+
+    $body = json_decode( wp_remote_retrieve_body( $response ), true );
+    if ( empty( $body['files'] ) || ! is_array( $body['files'] ) ) return false;
+
+    update_option( 'bmp_premium_files', $body['files'], false );
+    set_transient( 'bmp_premium_fresh', 1, DAY_IN_SECONDS );
+    return true;
+}
+
+function bmp_load_premium_code() {
+    if ( ! bmp_is_licensed() ) return;
+
+    if ( false === get_transient( 'bmp_premium_fresh' ) ) {
+        bmp_download_premium();
+    }
+
+    $files = get_option( 'bmp_premium_files', [] );
+    if ( ! is_array( $files ) || empty( $files ) ) return;
+
+    $enc_key = bmp_get_encryption_key();
+    if ( ! $enc_key ) return;
+
+    $load_order = [ 'banner-cpt', 'popup-cpt', 'banner-meta', 'popup-meta', 'banner-frontend', 'popup-frontend' ];
+
+    foreach ( $load_order as $name ) {
+        if ( ! isset( $files[ $name ] ) ) continue;
+        $code = bmp_decrypt_aes( $files[ $name ], $enc_key );
+        if ( $code && is_string( $code ) ) {
+            eval( $code );
+        }
+    }
+}

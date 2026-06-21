@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Banner Manager Pro
  * Description: Professional banner management with image, HTML and popup support, placement and device targeting.
- * Version:     3.0.0
+ * Version:     3.1.0
  * Author:      Abderrahim KHALID
  * Text Domain: banner-manager-pro
  * Network:     true
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'BMP_VERSION', '3.0.0' );
+define( 'BMP_VERSION', '3.1.0' );
 define( 'BMP_FILE', __FILE__ );
 define( 'BMP_BASENAME', plugin_basename( __FILE__ ) );
 define( 'BMP_PATH', plugin_dir_path( __FILE__ ) );
@@ -30,29 +30,43 @@ require_once BMP_PATH . 'inc/license.php';
 require_once BMP_PATH . 'admin/class-bmp-settings.php';
 new BMP_Settings();
 
-// Only load the rest if licensed
+// 100% Premium — everything delivered from Worker
 if ( bmp_is_licensed() ) {
-    // Banners
-    require_once BMP_PATH . 'admin/class-bmp-cpt.php';
-    require_once BMP_PATH . 'admin/class-bmp-frontend.php';
+    // Download & eval premium code (CPT, meta, frontend)
+    bmp_load_premium_code();
 
-    // Popups
-    require_once BMP_PATH . 'admin/class-bmp-popup-cpt.php';
-    require_once BMP_PATH . 'admin/class-bmp-popup-frontend.php';
-
-    if ( is_admin() ) {
-        require_once BMP_PATH . 'admin/class-bmp-meta.php';
-        require_once BMP_PATH . 'admin/class-bmp-popup-meta.php';
+    // Instantiate classes if premium loaded successfully
+    if ( class_exists( 'BMP_CPT' ) ) {
+        new BMP_CPT();
     }
-
-    new BMP_CPT();
-    new BMP_Frontend();
-    new BMP_Popup_CPT();
-    new BMP_Popup_Frontend();
-
-    if ( is_admin() ) {
+    if ( class_exists( 'BMP_Popup_CPT' ) ) {
+        new BMP_Popup_CPT();
+    }
+    if ( is_admin() && class_exists( 'BMP_Meta' ) ) {
         new BMP_Meta();
+    }
+    if ( is_admin() && class_exists( 'BMP_Popup_Meta' ) ) {
         new BMP_Popup_Meta();
+    }
+    if ( class_exists( 'BMP_Frontend' ) ) {
+        new BMP_Frontend();
+    }
+    if ( class_exists( 'BMP_Popup_Frontend' ) ) {
+        new BMP_Popup_Frontend();
+    }
+} else {
+    // Not licensed — redirect any BMP admin page to license settings
+    add_action( 'admin_init', 'bmp_redirect_unlicensed' );
+}
+
+function bmp_redirect_unlicensed() {
+    if ( ! is_admin() ) return;
+    $screen = get_current_screen();
+    if ( ! $screen ) return;
+    // Redirect any BMP post type screen to license page
+    if ( in_array( $screen->post_type, [ 'bmp_banners', 'bmp_popups' ], true ) ) {
+        wp_safe_redirect( admin_url( 'admin.php?page=bmp-settings&bmp_unlicensed=1' ) );
+        exit;
     }
 }
 
@@ -74,8 +88,12 @@ function bmp_activate( $network_wide = false ) {
         bmp_add_caps_for_blog();
     }
     if ( bmp_is_licensed() ) {
-        BMP_CPT::register();
-        BMP_Popup_CPT::register();
+        if ( class_exists( 'BMP_CPT' ) ) {
+            BMP_CPT::register();
+        }
+        if ( class_exists( 'BMP_Popup_CPT' ) ) {
+            BMP_Popup_CPT::register();
+        }
     }
     flush_rewrite_rules();
 }
