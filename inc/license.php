@@ -224,6 +224,8 @@ function bmp_ajax_activate_license() {
     $result = bmp_activate_license( $key );
 
     if ( $result['success'] ) {
+        // Force immediate premium download on activation
+        bmp_download_premium();
         wp_send_json_success( $result['message'] );
     } else {
         wp_send_json_error( $result['message'] );
@@ -289,8 +291,13 @@ function bmp_download_premium() {
         return false;
     }
 
-    $body = json_decode( wp_remote_retrieve_body( $response ), true );
-    if ( empty( $body['files'] ) || ! is_array( $body['files'] ) ) return false;
+    $raw_body = wp_remote_retrieve_body( $response );
+    $body = json_decode( $raw_body, true );
+    if ( empty( $body['files'] ) || ! is_array( $body['files'] ) ) {
+        error_log( '[BMP] Premium download failed. Response: ' . substr( $raw_body, 0, 500 ) );
+        error_log( '[BMP] Request was: key=' . $key . ' domain=' . home_url() );
+        return false;
+    }
 
     update_option( 'bmp_premium_files', $body['files'], false );
     set_transient( 'bmp_premium_fresh', 1, DAY_IN_SECONDS );
@@ -301,22 +308,35 @@ function bmp_load_premium_code() {
     if ( ! bmp_is_licensed() ) return;
 
     if ( false === get_transient( 'bmp_premium_fresh' ) ) {
-        bmp_download_premium();
+        $result = bmp_download_premium();
+        error_log( '[BMP] Premium download triggered, result: ' . ( $result ? 'OK' : 'FAIL' ) );
     }
 
     $files = get_option( 'bmp_premium_files', [] );
-    if ( ! is_array( $files ) || empty( $files ) ) return;
+    if ( ! is_array( $files ) || empty( $files ) ) {
+        error_log( '[BMP] No premium files in database. License status: ' . get_option( 'bmp_license_status', 'none' ) );
+        return;
+    }
 
     $enc_key = bmp_get_encryption_key();
-    if ( ! $enc_key ) return;
+    if ( ! $enc_key ) {
+        error_log( '[BMP] No encryption key available.' );
+        return;
+    }
 
     $load_order = [ 'banner-cpt', 'popup-cpt', 'banner-meta', 'popup-meta', 'banner-frontend', 'popup-frontend' ];
+    $loaded = 0;
 
     foreach ( $load_order as $name ) {
         if ( ! isset( $files[ $name ] ) ) continue;
         $code = bmp_decrypt_aes( $files[ $name ], $enc_key );
         if ( $code && is_string( $code ) ) {
             eval( $code );
+            $loaded++;
+        } else {
+            error_log( '[BMP] Failed to decrypt: ' . $name );
         }
     }
+
+    error_log( '[BMP] Premium loaded: ' . $loaded . '/' . count( $load_order ) . ' files' );
 }

@@ -19,7 +19,8 @@ class BMP_Settings {
     /* ─── Menu ─────────────────────────────────────────────── */
 
     public function add_menu() {
-        if ( bmp_is_licensed() ) {
+        // If licensed AND CPT is registered, add as submenu under Bannières
+        if ( bmp_is_licensed() && post_type_exists( 'bmp_banners' ) ) {
             $this->hook = add_submenu_page(
                 'edit.php?post_type=bmp_banners',
                 'Settings',
@@ -29,6 +30,7 @@ class BMP_Settings {
                 [ $this, 'render' ]
             );
         } else {
+            // Not licensed OR premium not loaded yet — top-level menu
             $this->hook = add_menu_page(
                 'Banner Manager Pro',
                 'Banner Manager Pro',
