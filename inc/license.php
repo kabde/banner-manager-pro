@@ -29,6 +29,13 @@ function bmp_is_licensed() {
  * Activate license
  */
 function bmp_activate_license( $key ) {
+    // Rate limiting — max 5 attempts per minute
+    $attempts = (int) get_transient( 'bmp_license_attempts' );
+    if ( $attempts >= 5 ) {
+        return [ 'success' => false, 'message' => 'Trop de tentatives. Réessayez dans une minute.' ];
+    }
+    set_transient( 'bmp_license_attempts', $attempts + 1, MINUTE_IN_SECONDS );
+
     $key = strtoupper( sanitize_text_field( trim( $key ) ) );
     if ( ! preg_match( '/^BMP-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/', $key ) ) {
         return [ 'success' => false, 'message' => 'Format de licence invalide.' ];
@@ -45,6 +52,7 @@ function bmp_activate_license( $key ) {
     ]);
 
     if ( is_wp_error( $response ) ) {
+        error_log( '[BMP] License activation error: ' . $response->get_error_message() );
         return [ 'success' => false, 'message' => 'Erreur de connexion: ' . $response->get_error_message() ];
     }
 
@@ -132,9 +140,11 @@ function bmp_schedule_validation() {
 }
 add_action( 'init', 'bmp_schedule_validation' );
 
-// Cleanup cron on deactivation
+// Cleanup cron + transients on plugin deactivation
 register_deactivation_hook( BMP_FILE, function() {
     wp_clear_scheduled_hook( 'bmp_validate_license_cron' );
+    delete_transient( 'bmp_license_valid' );
+    delete_transient( 'bmp_premium_fresh' );
 });
 
 /**

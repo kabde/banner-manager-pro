@@ -690,31 +690,6 @@ class BMP_Settings {
                 });
             });
 
-            /* ── Media picker for popup image ── */
-            $('#bmp_popup_pick_image').on('click', function(e) {
-                e.preventDefault();
-                var frame = wp.media({
-                    title: 'Select Popup Image',
-                    button: { text: 'Use this image' },
-                    multiple: false,
-                    library: { type: 'image' }
-                });
-                frame.on('select', function() {
-                    var attachment = frame.state().get('selection').first().toJSON();
-                    $('#bmp_popup_image_id').val(attachment.id);
-                    var url = attachment.sizes && attachment.sizes.medium ? attachment.sizes.medium.url : attachment.url;
-                    $('#bmp_popup_image_preview').html('<img src="' + url + '" alt="">');
-                    $('#bmp_popup_remove_image').show();
-                });
-                frame.open();
-            });
-
-            $('#bmp_popup_remove_image').on('click', function(e) {
-                e.preventDefault();
-                $('#bmp_popup_image_id').val('');
-                $('#bmp_popup_image_preview').html('');
-                $(this).hide();
-            });
         });
         </script>
         <?php

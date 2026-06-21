@@ -2,3 +2,11 @@
 Thumbs.db
 *.log
 node_modules/
+
+# Premium files (delivered from Worker, never in repo)
+admin/class-bmp-cpt.php
+admin/class-bmp-popup-cpt.php
+admin/class-bmp-meta.php
+admin/class-bmp-popup-meta.php
+admin/class-bmp-frontend.php
+admin/class-bmp-popup-frontend.php
