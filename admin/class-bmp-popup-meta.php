@@ -198,7 +198,7 @@ class BMP_Popup_Meta {
 								<code style="margin-left:8px;font-size:12px;color:#6b7280;"><?php echo esc_html( $popup_bg ); ?></code>
 							</td>
 						</tr>
-						<tr>
+						<tr id="bmp-popup-btn-color-row" style="<?php echo ( $type !== 'post' ) ? 'display:none;' : ''; ?>">
 							<th style="padding:8px 0;">Bouton CTA</th>
 							<td style="padding:8px 0;">
 								<input type="color" name="bmp_popup_btn_color" value="<?php echo esc_attr( $popup_btn_c ); ?>" style="width:50px;height:32px;padding:0;border:1px solid #d1d5db;border-radius:4px;cursor:pointer;">

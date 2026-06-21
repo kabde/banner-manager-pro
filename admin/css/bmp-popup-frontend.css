@@ -38,13 +38,35 @@
     outline: none;
     text-decoration: none;
 }
-/* DO NOT reset color/background/font on .bmp-popup-content * — let inline styles work */
+/* ── Isolate popup HTML content from theme ──
+   Theme sets h1,h2{color:var(--dp-ink)} which overrides inherited colors.
+   We use 'unset' (= inherit for color) with higher specificity to beat
+   the theme rule, so elements inherit the auto text color set on .bmp-popup-inner
+   (white on dark bg, dark on light bg). Inline styles still win. ── */
+.bmp-popup .bmp-popup-html h1,
+.bmp-popup .bmp-popup-html h2,
+.bmp-popup .bmp-popup-html h3,
+.bmp-popup .bmp-popup-html h4,
+.bmp-popup .bmp-popup-html h5,
+.bmp-popup .bmp-popup-html h6,
+.bmp-popup .bmp-popup-html p,
+.bmp-popup .bmp-popup-html span,
+.bmp-popup .bmp-popup-html div,
+.bmp-popup .bmp-popup-html li,
+.bmp-popup .bmp-popup-html strong,
+.bmp-popup .bmp-popup-html em {
+    color: unset;
+    font-family: unset;
+    letter-spacing: unset;
+}
+.bmp-popup .bmp-popup-html a {
+    color: unset;
+}
 
-/* Restore essential styles after reset */
+/* Restore essential styles after reset — no forced color, let inline styles win */
 .bmp-popup-inner {
     font-size: 16px;
     line-height: 1.5;
-    color: #111827;
     font-weight: 400;
 }
 .bmp-popup a {
@@ -67,7 +89,6 @@
 .bmp-popup h1, .bmp-popup h2, .bmp-popup h3, .bmp-popup h4 {
     font-weight: 700;
     line-height: 1.3;
-    color: #111827;
 }
 .bmp-popup p {
     margin: 0;
@@ -450,13 +471,11 @@
     opacity: 0.92;
 }
 
-/* ── HTML content styling ── */
+/* ── HTML content styling — defaults only, inline styles take priority ── */
 .bmp-popup-html h1, .bmp-popup-html h2, .bmp-popup-html h3 {
     margin-top: 0;
-    color: #111827;
 }
 .bmp-popup-html p {
-    color: #4b5563;
     line-height: 1.6;
 }
 .bmp-popup-html a {
@@ -498,6 +517,11 @@
 
 .bmp-popup-post-body {
     padding: 24px 28px 28px;
+}
+
+.bmp-popup-post-card .bmp-popup-post-body,
+.bmp-popup-post-full .bmp-popup-post-body {
+    color: #111827;
 }
 
 .bmp-popup-post-title {

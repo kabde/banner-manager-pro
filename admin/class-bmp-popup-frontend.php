@@ -212,8 +212,21 @@ class BMP_Popup_Frontend {
         if ( $close_color === 'light' ) $close_class = ' bmp-close-light';
         elseif ( $close_color === 'dark' ) $close_class = ' bmp-close-dark';
 
-        // Inner style (bg + radius)
-        $inner_style = 'background:' . esc_attr( $bg_color ) . ';border-radius:' . esc_attr( $radius ) . 'px;';
+        // Compute text color based on background luminance
+        $text_color = '#111827';
+        $hex = ltrim( $bg_color, '#' );
+        if ( strlen( $hex ) === 6 ) {
+            $r = hexdec( substr( $hex, 0, 2 ) );
+            $g = hexdec( substr( $hex, 2, 2 ) );
+            $b = hexdec( substr( $hex, 4, 2 ) );
+            $luminance = ( 0.299 * $r + 0.587 * $g + 0.114 * $b ) / 255;
+            if ( $luminance < 0.5 ) {
+                $text_color = '#ffffff';
+            }
+        }
+
+        // Inner style (bg + radius + auto text color)
+        $inner_style = 'background:' . esc_attr( $bg_color ) . ';border-radius:' . esc_attr( $radius ) . 'px;color:' . esc_attr( $text_color ) . ';';
         ?>
         <?php if ( $has_overlay ) : ?>
         <div id="bmp-popup-overlay" class="bmp-popup-overlay" style="display:none;"></div>

@@ -25,6 +25,8 @@ jQuery(function($) {
         $('#bmp-popup-image-fields').toggle(type === 'image');
         $('#bmp-popup-html-fields').toggle(type === 'html');
         $('#bmp-popup-post-fields').toggle(type === 'post');
+        // CTA button color only relevant for post type (card mode has a button)
+        $('#bmp-popup-btn-color-row').toggle(type === 'post');
         updatePreview();
     }
 
