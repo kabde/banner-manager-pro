@@ -1411,3 +1411,57 @@ msgstr "Choisir une image"
 #: admin/js/bmp-popup-admin-cpt.js:213
 msgid "Use this image"
 msgstr "Utiliser cette image"
+
+#: worker/popup-meta worker/popup-frontend
+msgid "Read More"
+msgstr "Lire la suite"
+
+#: worker/popup-frontend
+msgid "Copy"
+msgstr "Copier"
+
+#: admin/class-bmp-settings.php (docs)
+msgid "Creative Types"
+msgstr "Types de créatifs"
+
+msgid "Simple image popup with optional link. Best for promotional banners."
+msgstr "Popup image simple avec lien optionnel. Idéal pour les bannières promotionnelles."
+
+msgid "Custom HTML or JavaScript code. Full control over content."
+msgstr "Code HTML ou JavaScript personnalisé. Contrôle total du contenu."
+
+msgid "Displays an existing post or page as a card or full content."
+msgstr "Affiche un article ou une page existante en carte ou en contenu complet."
+
+msgid "Choose from 8 professional templates and customize heading, text, image, and CTA button."
+msgstr "Choisissez parmi 8 templates professionnels et personnalisez le titre, le texte, l'image et le bouton CTA."
+
+msgid "Visual Templates"
+msgstr "Templates visuels"
+
+msgid "Template"
+msgstr "Template"
+
+msgid "Hero image with urgency badge and CTA. Perfect for limited-time offers."
+msgstr "Image héro avec badge d'urgence et CTA. Parfait pour les offres limitées."
+
+msgid "Two-column layout with image and download CTA. Ideal for ebooks and guides."
+msgstr "Mise en page deux colonnes avec image et CTA. Idéal pour les ebooks et guides."
+
+msgid "Clean centered layout with icon and signup CTA."
+msgstr "Mise en page centrée avec icône et CTA d'inscription."
+
+msgid "Embedded YouTube/Vimeo video with heading and CTA."
+msgstr "Vidéo YouTube/Vimeo intégrée avec titre et CTA."
+
+msgid "Discount code with copy-to-clipboard button and CTA."
+msgstr "Code promo avec bouton copier et CTA."
+
+msgid "Clean text-only popup. Strong typography, no image needed."
+msgstr "Popup texte uniquement. Typographie forte, sans image."
+
+msgid "Product image with price badge, description, and buy CTA."
+msgstr "Image produit avec badge prix, description et CTA d'achat."
+
+msgid "Customer quote with avatar, name, role, and CTA."
+msgstr "Témoignage client avec avatar, nom, rôle et CTA."

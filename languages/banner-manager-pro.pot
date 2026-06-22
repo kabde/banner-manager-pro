@@ -1455,3 +1455,11 @@ msgstr ""
 #: admin/js/bmp-popup-admin-cpt.js:213
 msgid "Use this image"
 msgstr ""
+
+#: worker/popup-meta worker/popup-frontend
+msgid "Read More"
+msgstr ""
+
+#: worker/popup-frontend
+msgid "Copy"
+msgstr ""

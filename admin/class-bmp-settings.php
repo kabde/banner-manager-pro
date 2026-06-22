@@ -510,7 +510,34 @@ class BMP_Settings {
                         <div class="bmp-admin-section">
                             <h2><?php esc_html_e( 'Popups', 'banner-manager-pro' ); ?></h2>
                             <p style="color:#374151;"><?php echo __( 'Popups are managed via a dedicated <strong>Popups</strong> menu in the WordPress sidebar.', 'banner-manager-pro' ); ?></p>
-                            <h3><?php esc_html_e( 'Positions', 'banner-manager-pro' ); ?></h3>
+
+                            <h3><?php esc_html_e( 'Creative Types', 'banner-manager-pro' ); ?></h3>
+                            <table class="widefat striped" style="max-width:700px;">
+                                <thead><tr><th><?php esc_html_e( 'Type', 'banner-manager-pro' ); ?></th><th><?php esc_html_e( 'Usage', 'banner-manager-pro' ); ?></th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong><?php esc_html_e( 'Image', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Simple image popup with optional link. Best for promotional banners.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'HTML/JS', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Custom HTML or JavaScript code. Full control over content.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Post / Page', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Displays an existing post or page as a card or full content.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Visual', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Choose from 8 professional templates and customize heading, text, image, and CTA button.', 'banner-manager-pro' ); ?></td></tr>
+                                </tbody>
+                            </table>
+
+                            <h3 style="margin-top:20px;"><?php esc_html_e( 'Visual Templates', 'banner-manager-pro' ); ?></h3>
+                            <table class="widefat striped" style="max-width:700px;">
+                                <thead><tr><th><?php esc_html_e( 'Template', 'banner-manager-pro' ); ?></th><th><?php esc_html_e( 'Description', 'banner-manager-pro' ); ?></th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>Flash Sale</strong></td><td><?php esc_html_e( 'Hero image with urgency badge and CTA. Perfect for limited-time offers.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong>Lead Magnet</strong></td><td><?php esc_html_e( 'Two-column layout with image and download CTA. Ideal for ebooks and guides.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong>Newsletter</strong></td><td><?php esc_html_e( 'Clean centered layout with icon and signup CTA.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong>Video Spotlight</strong></td><td><?php esc_html_e( 'Embedded YouTube/Vimeo video with heading and CTA.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong>Coupon Code</strong></td><td><?php esc_html_e( 'Discount code with copy-to-clipboard button and CTA.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong>Announcement</strong></td><td><?php esc_html_e( 'Clean text-only popup. Strong typography, no image needed.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong>Product Showcase</strong></td><td><?php esc_html_e( 'Product image with price badge, description, and buy CTA.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong>Testimonial</strong></td><td><?php esc_html_e( 'Customer quote with avatar, name, role, and CTA.', 'banner-manager-pro' ); ?></td></tr>
+                                </tbody>
+                            </table>
+
+                            <h3 style="margin-top:20px;"><?php esc_html_e( 'Positions', 'banner-manager-pro' ); ?></h3>
                             <table class="widefat striped" style="max-width:700px;">
                                 <thead><tr><th><?php esc_html_e( 'Position', 'banner-manager-pro' ); ?></th><th><?php esc_html_e( 'Behavior', 'banner-manager-pro' ); ?></th></tr></thead>
                                 <tbody>
