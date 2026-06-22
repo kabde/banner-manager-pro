@@ -248,6 +248,11 @@ jQuery(function($) {
         $(this).next('span').text($(this).val() + 'px');
     });
 
+    // Close button style — show/hide custom color pickers
+    $('input[name="bmp_popup_close_color"]').on('change', function() {
+        $('#bmp-close-custom-color').toggle($(this).val() === 'custom');
+    });
+
     // ═══════════════════════════════════════
     // VISUAL TEMPLATE SYSTEM
     // ═══════════════════════════════════════

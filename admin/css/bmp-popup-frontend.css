@@ -657,24 +657,112 @@
     }
 }
 
-/* ── Close button color variants ── */
+/* ── Close button style variants ── */
+
+/* Light circle: white bg + dark cross (for dark backgrounds) */
 .bmp-popup .bmp-popup-close.bmp-close-light {
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    color: #1f2937;
+    border-color: rgba(255, 255, 255, 0.95);
+    text-shadow: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 .bmp-popup .bmp-popup-close.bmp-close-light:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: #fff;
+    color: #000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* Dark circle: dark bg + white cross (for light backgrounds) */
 .bmp-popup .bmp-popup-close.bmp-close-dark {
-    background: rgba(0, 0, 0, 0.08);
-    color: #374151;
-    border-color: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    border-color: rgba(0, 0, 0, 0.8);
     text-shadow: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .bmp-popup .bmp-popup-close.bmp-close-dark:hover {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Minimal: no circle, just the × symbol */
+.bmp-popup .bmp-popup-close.bmp-close-minimal {
+    background: none;
+    border: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    color: #6b7280;
+    font-size: 24px;
+    text-shadow: none;
+    box-shadow: none;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+}
+.bmp-popup .bmp-popup-close.bmp-close-minimal:hover {
+    color: #111827;
+    background: none;
+    transform: scale(1.2);
+    box-shadow: none;
+}
+
+/* Text "Close" style */
+.bmp-popup .bmp-popup-close.bmp-close-text {
+    width: auto;
+    max-width: none;
+    min-width: auto;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: #374151;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    text-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    letter-spacing: 0.02em;
+}
+.bmp-popup .bmp-popup-close.bmp-close-text:hover {
+    background: rgba(0, 0, 0, 0.12);
     color: #111;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Outline circle: transparent bg with visible border */
+.bmp-popup .bmp-popup-close.bmp-close-outline {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    color: #fff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.bmp-popup .bmp-popup-close.bmp-close-outline:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: none;
+}
+
+/* Custom color — set via inline style, just reset base */
+.bmp-popup .bmp-popup-close.bmp-close-custom {
+    text-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.bmp-popup .bmp-popup-close.bmp-close-custom:hover {
+    filter: brightness(0.85);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ── Full post content mode ── */
@@ -831,7 +919,7 @@
 .bmp-visual--flash-sale .bmp-visual__badge {
     position: absolute;
     top: 16px;
-    right: 16px;
+    left: 16px;
     background: #ef4444;
     color: #fff;
     font-size: 12px;
