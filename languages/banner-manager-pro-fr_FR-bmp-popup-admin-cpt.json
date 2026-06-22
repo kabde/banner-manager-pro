@@ -1,0 +1,23 @@
+{
+  "translation-revision-date": "2026-06-22T00:00:00+00:00",
+  "generator": "hand",
+  "source": "admin/js/bmp-popup-admin-cpt.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "fr",
+        "plural-forms": "nplurals=2; plural=(n > 1);"
+      },
+      "No image selected.": ["Aucune image sélectionnée."],
+      "No HTML code.": ["Aucun code HTML."],
+      "Choose a template.": ["Choisissez un template."],
+      "WordPress media library is not available.": ["La bibliothèque média WordPress n'est pas disponible."],
+      "Choose an image": ["Choisir une image"],
+      "Use this image": ["Utiliser cette image"],
+      "Choose Image": ["Choisir une image"],
+      "Remove": ["Supprimer"]
+    }
+  }
+}

@@ -23,6 +23,11 @@ define( 'BMP_URL',  plugin_dir_url( __FILE__ ) );
 define( 'BMP_CAPABILITY', 'manage_bmp' );
 define( 'BMP_API_URL', 'https://dp-starter.khalid.digital' );
 
+// Load translations
+add_action( 'init', function() {
+    load_plugin_textdomain( 'banner-manager-pro', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+});
+
 // License system FIRST
 require_once BMP_PATH . 'inc/license.php';
 

@@ -1,0 +1,1413 @@
+# French translation for Banner Manager Pro
+# Copyright (C) 2026 Abderrahim KHALID
+# This file is distributed under the same license as the Banner Manager Pro plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Banner Manager Pro 3.2.0\n"
+"Report-Msgid-Bugs-To: contact@khalid.digital\n"
+"POT-Creation-Date: 2026-06-22 00:00+0000\n"
+"PO-Revision-Date: 2026-06-22 00:00+0000\n"
+"Last-Translator: Abderrahim KHALID <contact@khalid.digital>\n"
+"Language-Team: French <contact@khalid.digital>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: inc/license.php:35
+msgid "Too many attempts. Try again in one minute."
+msgstr "Trop de tentatives. Réessayez dans une minute."
+
+#: inc/license.php:41
+msgid "Invalid license format."
+msgstr "Format de licence invalide."
+
+#: inc/license.php:56
+msgid "Connection error: "
+msgstr "Erreur de connexion : "
+
+#: inc/license.php:69
+msgid "License activated."
+msgstr "Licence activée."
+
+#: inc/license.php:72
+msgid "Activation failed."
+msgstr "L'activation a échoué."
+
+#: banner-manager-pro.php:197
+#, php-format
+msgid "Please <a href=\"%s\">activate your license</a> to use the plugin."
+msgstr "Veuillez <a href=\"%s\">activer votre licence</a> pour utiliser le plugin."
+
+#: banner-manager-pro.php:211
+#, php-format
+msgid "Your license has expired. <a href=\"%s\">Renew</a>"
+msgstr "Votre licence a expiré. <a href=\"%s\">Renouveler</a>"
+
+#: banner-manager-pro.php:214
+#, php-format
+msgid "Your license expires in %1$d day. <a href=\"%2$s\">View</a>"
+msgid_plural "Your license expires in %1$d days. <a href=\"%2$s\">View</a>"
+msgstr[0] "Votre licence expire dans %1$d jour. <a href=\"%2$s\">Voir</a>"
+msgstr[1] "Votre licence expire dans %1$d jours. <a href=\"%2$s\">Voir</a>"
+
+#: banner-manager-pro.php:224
+msgid "Permission denied."
+msgstr "Permission refusée."
+
+#: banner-manager-pro.php:244
+msgid "License deactivated."
+msgstr "Licence désactivée."
+
+#: admin/class-bmp-settings.php:108
+msgid "You do not have sufficient permissions."
+msgstr "Vous n'avez pas les permissions suffisantes."
+
+#: admin/class-bmp-settings.php:117
+msgid "License"
+msgstr "Licence"
+
+#: admin/class-bmp-settings.php:118
+msgid "General"
+msgstr "Général"
+
+#: admin/class-bmp-settings.php:119
+msgid "Display"
+msgstr "Affichage"
+
+#: admin/class-bmp-settings.php:120
+msgid "Advanced"
+msgstr "Avancé"
+
+#: admin/class-bmp-settings.php:121
+msgid "Documentation"
+msgstr "Documentation"
+
+#: admin/class-bmp-settings.php:219
+msgid "License Active"
+msgstr "Licence active"
+
+#: admin/class-bmp-settings.php:227
+msgid "License Key"
+msgstr "Clé de licence"
+
+#: admin/class-bmp-settings.php:232
+msgid "Domain"
+msgstr "Domaine"
+
+#: admin/class-bmp-settings.php:236
+msgid "Expiration"
+msgstr "Expiration"
+
+#: admin/class-bmp-settings.php:244
+#, php-format
+msgid "Expired on %s"
+msgstr "Expiré le %s"
+
+#: admin/class-bmp-settings.php:247
+#, php-format
+msgid "%d day remaining"
+msgid_plural "%d days remaining"
+msgstr[0] "%d jour restant"
+msgstr[1] "%d jours restants"
+
+#: admin/class-bmp-settings.php:253
+msgid "Lifetime"
+msgstr "Illimitée"
+
+#: admin/class-bmp-settings.php:260
+msgid "Deactivate License"
+msgstr "Désactiver la licence"
+
+#: admin/class-bmp-settings.php:263
+msgid "Activate Your License"
+msgstr "Activez votre licence"
+
+#: admin/class-bmp-settings.php:264
+msgid "Enter your license key to activate Banner Manager Pro."
+msgstr "Entrez votre clé de licence pour activer Banner Manager Pro."
+
+#: admin/class-bmp-settings.php:269
+msgid "Activate License"
+msgstr "Activer la licence"
+
+#: admin/class-bmp-settings.php:287
+msgid "General Settings"
+msgstr "Paramètres généraux"
+
+#: admin/class-bmp-settings.php:290
+msgid "Enable Banners"
+msgstr "Activer les bannières"
+
+#: admin/class-bmp-settings.php:294
+msgid "Enable frontend banner display globally"
+msgstr "Activer l'affichage des bannières sur le site"
+
+#: admin/class-bmp-settings.php:299
+msgid "Default Link Target"
+msgstr "Cible du lien par défaut"
+
+#: admin/class-bmp-settings.php:302
+msgid "_blank (new tab)"
+msgstr "_blank (nouvel onglet)"
+
+#: admin/class-bmp-settings.php:303
+msgid "_self (same tab)"
+msgstr "_self (même onglet)"
+
+#: admin/class-bmp-settings.php:308
+msgid "Default Link Rel"
+msgstr "Attribut rel par défaut"
+
+#: admin/class-bmp-settings.php:325
+msgid "Lazy Loading"
+msgstr "Chargement différé"
+
+#: admin/class-bmp-settings.php:329
+msgid "Add <code>loading=\"lazy\"</code> to banner images"
+msgstr "Ajouter <code>loading=\"lazy\"</code> aux images des bannières"
+
+#: admin/class-bmp-settings.php:336
+msgid "Save Settings"
+msgstr "Enregistrer les paramètres"
+
+#: admin/class-bmp-settings.php:343
+msgid "Banner Positions"
+msgstr "Positions des bannières"
+
+#: admin/class-bmp-settings.php:344
+msgid "Overview of available banner positions and the hooks they use."
+msgstr "Aperçu des positions de bannières disponibles et des hooks utilisés."
+
+#: admin/class-bmp-settings.php:348
+msgid "Position"
+msgstr "Position"
+
+#: admin/class-bmp-settings.php:349
+msgid "Hook / Method"
+msgstr "Hook / Méthode"
+
+#: admin/class-bmp-settings.php:350
+msgid "Description"
+msgstr "Description"
+
+#: admin/class-bmp-settings.php:355
+msgid "Header"
+msgstr "En-tête"
+
+#: admin/class-bmp-settings.php:357
+msgid "Displayed right after the opening <body> tag"
+msgstr "Affiché juste après la balise <body> ouvrante"
+
+#: admin/class-bmp-settings.php:360
+msgid "Footer"
+msgstr "Pied de page"
+
+#: admin/class-bmp-settings.php:362
+msgid "Displayed before the footer area"
+msgstr "Affiché avant la zone de pied de page"
+
+#: admin/class-bmp-settings.php:365
+msgid "Sidebar 1"
+msgstr "Barre latérale 1"
+
+#: admin/class-bmp-settings.php:367
+msgid "Injected into the primary sidebar"
+msgstr "Injecté dans la barre latérale principale"
+
+#: admin/class-bmp-settings.php:370
+msgid "Sidebar 2"
+msgstr "Barre latérale 2"
+
+#: admin/class-bmp-settings.php:372
+msgid "Injected into the secondary sidebar"
+msgstr "Injecté dans la barre latérale secondaire"
+
+#: admin/class-bmp-settings.php:375
+msgid "In Article"
+msgstr "Dans l'article"
+
+#: admin/class-bmp-settings.php:377
+msgid "Inserted within post content at configured position"
+msgstr "Inséré dans le contenu de l'article à la position configurée"
+
+#: admin/class-bmp-settings.php:380
+msgid "Between Articles"
+msgstr "Entre les articles"
+
+#: admin/class-bmp-settings.php:382
+msgid "Displayed between posts in archive/loop pages"
+msgstr "Affiché entre les articles dans les pages d'archives"
+
+#: admin/class-bmp-settings.php:389
+msgid "Display Options"
+msgstr "Options d'affichage"
+
+#: admin/class-bmp-settings.php:392
+msgid "In-Article Position"
+msgstr "Position dans l'article"
+
+#: admin/class-bmp-settings.php:395
+msgid "After 1st paragraph"
+msgstr "Après le 1er paragraphe"
+
+#: admin/class-bmp-settings.php:396
+msgid "After 2nd paragraph"
+msgstr "Après le 2ème paragraphe"
+
+#: admin/class-bmp-settings.php:397
+msgid "After 3rd paragraph"
+msgstr "Après le 3ème paragraphe"
+
+#: admin/class-bmp-settings.php:398
+msgid "End of content"
+msgstr "Fin du contenu"
+
+#: admin/class-bmp-settings.php:400
+msgid "Where to insert in-article banners within post content."
+msgstr "Où insérer les bannières dans le contenu de l'article."
+
+#: admin/class-bmp-settings.php:404
+msgid "Animation"
+msgstr "Animation"
+
+#: admin/class-bmp-settings.php:407
+msgid "None"
+msgstr "Aucune"
+
+#: admin/class-bmp-settings.php:408
+msgid "Fade In"
+msgstr "Fondu"
+
+#: admin/class-bmp-settings.php:409
+msgid "Slide Up"
+msgstr "Glissement vers le haut"
+
+#: admin/class-bmp-settings.php:411
+msgid "CSS animation applied when banners appear on screen."
+msgstr "Animation CSS appliquée lorsque les bannières apparaissent à l'écran."
+
+#: admin/class-bmp-settings.php:424
+msgid "Custom CSS"
+msgstr "CSS personnalisé"
+
+#: admin/class-bmp-settings.php:430
+msgid "Add custom CSS to style banners on the front-end."
+msgstr "Ajoutez du CSS personnalisé pour styliser les bannières côté visiteur."
+
+#: admin/class-bmp-settings.php:436
+msgid "Debug"
+msgstr "Débogage"
+
+#: admin/class-bmp-settings.php:439
+msgid "Debug Mode"
+msgstr "Mode débogage"
+
+#: admin/class-bmp-settings.php:443
+msgid "Enable <code>?debug_bmp</code> query parameter for administrators"
+msgstr "Activer le paramètre <code>?debug_bmp</code> pour les administrateurs"
+
+#: admin/class-bmp-settings.php:460
+msgid "Getting Started"
+msgstr "Pour commencer"
+
+#: admin/class-bmp-settings.php:462
+msgid "Go to <strong>Banners &rarr; Add New Banner</strong>"
+msgstr "Allez dans <strong>Bannières &rarr; Ajouter une bannière</strong>"
+
+#: admin/class-bmp-settings.php:463
+msgid "Give your banner a <strong>title</strong>"
+msgstr "Donnez un <strong>titre</strong> à votre bannière"
+
+#: admin/class-bmp-settings.php:464
+msgid "Choose the <strong>type</strong>: Image or HTML/JS"
+msgstr "Choisissez le <strong>type</strong> : Image ou HTML/JS"
+
+#: admin/class-bmp-settings.php:465
+msgid "For an image: upload the image and add a destination link"
+msgstr "Pour une image : téléchargez l'image et ajoutez un lien de destination"
+
+#: admin/class-bmp-settings.php:466
+msgid "Select the <strong>positions</strong> where the banner should appear"
+msgstr "Sélectionnez les <strong>positions</strong> où la bannière doit apparaître"
+
+#: admin/class-bmp-settings.php:467
+msgid "Choose the <strong>device targeting</strong> (Desktop, Mobile, or Both)"
+msgstr "Choisissez le <strong>ciblage par appareil</strong> (Bureau, Mobile ou Les deux)"
+
+#: admin/class-bmp-settings.php:468
+msgid "<strong>Publish</strong> — the banner is displayed immediately"
+msgstr "<strong>Publiez</strong> — la bannière s'affiche immédiatement"
+
+#: admin/class-bmp-settings.php:473
+msgid "Banner Types"
+msgstr "Types de bannières"
+
+#: admin/class-bmp-settings.php:475
+msgid "Type"
+msgstr "Type"
+
+#: admin/class-bmp-settings.php:475
+msgid "Usage"
+msgstr "Utilisation"
+
+#: admin/class-bmp-settings.php:477
+msgid "Image"
+msgstr "Image"
+
+#: admin/class-bmp-settings.php:477
+msgid "Visual banner with clickable link. Ideal for promotions, affiliates, and display ads."
+msgstr "Bannière visuelle avec lien cliquable. Idéal pour les promotions, l'affiliation et la publicité display."
+
+#: admin/class-bmp-settings.php:478
+msgid "HTML/JS"
+msgstr "HTML/JS"
+
+#: admin/class-bmp-settings.php:478
+msgid "Custom code (AdSense, ad networks, widgets). The code is inserted as-is."
+msgstr "Code personnalisé (AdSense, réseaux pub, widgets). Le code est inséré tel quel."
+
+#: admin/class-bmp-settings.php:484
+msgid "Available Positions"
+msgstr "Positions disponibles"
+
+#: admin/class-bmp-settings.php:486
+msgid "Location"
+msgstr "Emplacement"
+
+#: admin/class-bmp-settings.php:486
+msgid "WordPress Hook"
+msgstr "Hook WordPress"
+
+#: admin/class-bmp-settings.php:488
+msgid "Top of page, after the body opening tag"
+msgstr "Haut de page, après la balise body ouvrante"
+
+#: admin/class-bmp-settings.php:489
+msgid "Before the footer"
+msgstr "Avant le pied de page"
+
+#: admin/class-bmp-settings.php:490
+msgid "Primary sidebar"
+msgstr "Barre latérale principale"
+
+#: admin/class-bmp-settings.php:491
+msgid "Secondary sidebar"
+msgstr "Barre latérale secondaire"
+
+#: admin/class-bmp-settings.php:492
+msgid "After the 1st paragraph of a post"
+msgstr "Après le 1er paragraphe d'un article"
+
+#: admin/class-bmp-settings.php:493
+msgid "In post listings (blog, archives)"
+msgstr "Dans les listes d'articles (blog, archives)"
+
+#: admin/class-bmp-settings.php:499
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: admin/class-bmp-settings.php:501
+msgid "Displays banners assigned to the \"header\" position"
+msgstr "Affiche les bannières assignées à la position \"header\""
+
+#: admin/class-bmp-settings.php:504
+msgid "Displays up to 2 banners from sidebar 1"
+msgstr "Affiche jusqu'à 2 bannières de la barre latérale 1"
+
+#: admin/class-bmp-settings.php:507
+msgid "Available positions:"
+msgstr "Positions disponibles :"
+
+#: admin/class-bmp-settings.php:511
+msgid "Popups"
+msgstr "Popups"
+
+#: admin/class-bmp-settings.php:512
+msgid "Popups are managed via a dedicated <strong>Popups</strong> menu in the WordPress sidebar."
+msgstr "Les popups sont gérés via un menu <strong>Popups</strong> dédié dans la barre latérale WordPress."
+
+#: admin/class-bmp-settings.php:513
+msgid "Positions"
+msgstr "Emplacements"
+
+#: admin/class-bmp-settings.php:515
+msgid "Behavior"
+msgstr "Comportement"
+
+#: admin/class-bmp-settings.php:517
+msgid "Center"
+msgstr "Centre"
+
+#: admin/class-bmp-settings.php:517
+msgid "Centered modal with dark overlay. Sizes: small, medium, large, fullscreen."
+msgstr "Modale centrée avec overlay sombre. Tailles : petit, moyen, grand, plein écran."
+
+#: admin/class-bmp-settings.php:518
+msgid "Right / Left"
+msgstr "Droite / Gauche"
+
+#: admin/class-bmp-settings.php:518
+msgid "Slide-in panel from the side. 380px on desktop, 100% on mobile."
+msgstr "Panneau coulissant latéral. 380px sur bureau, 100% sur mobile."
+
+#: admin/class-bmp-settings.php:519
+msgid "Bottom"
+msgstr "Bas"
+
+#: admin/class-bmp-settings.php:519
+msgid "Notification bar fixed at the bottom of the screen."
+msgstr "Barre de notification fixée en bas de l'écran."
+
+#: admin/class-bmp-settings.php:520
+msgid "Top"
+msgstr "Haut"
+
+#: admin/class-bmp-settings.php:520
+msgid "Announcement bar fixed at the top of the screen."
+msgstr "Barre d'annonce fixée en haut de l'écran."
+
+#: admin/class-bmp-settings.php:524
+msgid "Triggers"
+msgstr "Déclencheurs"
+
+#: admin/class-bmp-settings.php:526
+msgid "Trigger"
+msgstr "Déclencheur"
+
+#: admin/class-bmp-settings.php:528
+msgid "Immediate"
+msgstr "Immédiat"
+
+#: admin/class-bmp-settings.php:528
+msgid "Displays as soon as the page loads"
+msgstr "S'affiche dès le chargement de la page"
+
+#: admin/class-bmp-settings.php:529
+msgid "Delay"
+msgstr "Délai"
+
+#: admin/class-bmp-settings.php:529
+msgid "Displays after X seconds (configurable)"
+msgstr "S'affiche après X secondes (configurable)"
+
+#: admin/class-bmp-settings.php:530
+msgid "Scroll"
+msgstr "Défilement"
+
+#: admin/class-bmp-settings.php:530
+msgid "Displays when the visitor has scrolled X% of the page"
+msgstr "S'affiche lorsque le visiteur a fait défiler X% de la page"
+
+#: admin/class-bmp-settings.php:531
+msgid "Exit intent"
+msgstr "Intention de sortie"
+
+#: admin/class-bmp-settings.php:531
+msgid "Displays when the mouse leaves the window (desktop only)"
+msgstr "S'affiche lorsque la souris quitte la fenêtre (bureau uniquement)"
+
+#: admin/class-bmp-settings.php:535
+msgid "Display Frequency"
+msgstr "Fréquence d'affichage"
+
+#: admin/class-bmp-settings.php:537
+msgid "Option"
+msgstr "Option"
+
+#: admin/class-bmp-settings.php:539
+msgid "Every visit"
+msgstr "À chaque visite"
+
+#: admin/class-bmp-settings.php:539
+msgid "The popup displays on every page load"
+msgstr "Le popup s'affiche à chaque chargement de page"
+
+#: admin/class-bmp-settings.php:540
+msgid "Per session"
+msgstr "Par session"
+
+#: admin/class-bmp-settings.php:540
+msgid "Once per browser session"
+msgstr "Une fois par session de navigateur"
+
+#: admin/class-bmp-settings.php:541
+msgid "Per day"
+msgstr "Par jour"
+
+#: admin/class-bmp-settings.php:541
+msgid "Once every 24 hours"
+msgstr "Une fois toutes les 24 heures"
+
+#: admin/class-bmp-settings.php:542
+msgid "Per week"
+msgstr "Par semaine"
+
+#: admin/class-bmp-settings.php:542
+msgid "Once every 7 days"
+msgstr "Une fois tous les 7 jours"
+
+#: admin/class-bmp-settings.php:543
+msgid "Once only"
+msgstr "Une seule fois"
+
+#: admin/class-bmp-settings.php:543
+msgid "Never displays again after the first dismissal"
+msgstr "Ne s'affiche plus après la première fermeture"
+
+#: admin/class-bmp-settings.php:547
+msgid "Targeting"
+msgstr "Ciblage"
+
+#: admin/class-bmp-settings.php:549
+msgid "<strong>Entire site</strong> — automatic rotation among popups with the same priority"
+msgstr "<strong>Tout le site</strong> — rotation automatique entre les popups de même priorité"
+
+#: admin/class-bmp-settings.php:550
+msgid "<strong>All posts</strong> or <strong>All pages</strong>"
+msgstr "<strong>Tous les articles</strong> ou <strong>Toutes les pages</strong>"
+
+#: admin/class-bmp-settings.php:551
+msgid "<strong>Specific post</strong> — select a specific post"
+msgstr "<strong>Article spécifique</strong> — sélectionner un article précis"
+
+#: admin/class-bmp-settings.php:552
+msgid "<strong>Specific page</strong> — select a specific page"
+msgstr "<strong>Page spécifique</strong> — sélectionner une page précise"
+
+#: admin/class-bmp-settings.php:553
+msgid "<strong>Category</strong> — displays on posts in this category"
+msgstr "<strong>Catégorie</strong> — s'affiche sur les articles de cette catégorie"
+
+#: admin/class-bmp-settings.php:554
+msgid "<strong>Homepage</strong> only"
+msgstr "<strong>Page d'accueil</strong> uniquement"
+
+#: admin/class-bmp-settings.php:559
+msgid "Predefined Formats"
+msgstr "Formats prédéfinis"
+
+#: admin/class-bmp-settings.php:562
+msgid "Horizontal Banners"
+msgstr "Bannières horizontales"
+
+#: admin/class-bmp-settings.php:564
+msgid "Ideal for: header, footer, between articles"
+msgstr "Idéal pour : en-tête, pied de page, entre les articles"
+
+#: admin/class-bmp-settings.php:567
+msgid "Vertical Banners"
+msgstr "Bannières verticales"
+
+#: admin/class-bmp-settings.php:569
+msgid "Ideal for: sidebars"
+msgstr "Idéal pour : barres latérales"
+
+#: admin/class-bmp-settings.php:575
+msgid "Device Targeting"
+msgstr "Ciblage par appareil"
+
+#: admin/class-bmp-settings.php:577
+msgid "<strong>Desktop</strong> — computers only"
+msgstr "<strong>Bureau</strong> — ordinateurs uniquement"
+
+#: admin/class-bmp-settings.php:578
+msgid "<strong>Mobile</strong> — smartphones and tablets only"
+msgstr "<strong>Mobile</strong> — smartphones et tablettes uniquement"
+
+#: admin/class-bmp-settings.php:579
+msgid "<strong>Both</strong> — all devices"
+msgstr "<strong>Les deux</strong> — tous les appareils"
+
+#: admin/class-bmp-settings.php:581
+msgid "Targeting uses <code>wp_is_mobile()</code> to detect the device."
+msgstr "Le ciblage utilise <code>wp_is_mobile()</code> pour détecter l'appareil."
+
+#: admin/class-bmp-settings.php:585
+msgid "Advanced Features"
+msgstr "Fonctionnalités avancées"
+
+#: admin/class-bmp-settings.php:587
+msgid "Quick Duplicate — duplicate a banner or popup in one click"
+msgstr "Duplication rapide — dupliquer une bannière ou un popup en un clic"
+
+#: admin/class-bmp-settings.php:588
+msgid "Admin Filters — filter by status, type, device, position"
+msgstr "Filtres admin — filtrer par statut, type, appareil, position"
+
+#: admin/class-bmp-settings.php:589
+msgid "Live Preview — desktop/mobile preview in the editor"
+msgstr "Aperçu en direct — prévisualisation bureau/mobile dans l'éditeur"
+
+#: admin/class-bmp-settings.php:590
+msgid "Multisite — compatible with WordPress Multisite (MU)"
+msgstr "Multisite — compatible avec WordPress Multisite (MU)"
+
+#: admin/class-bmp-settings.php:591
+msgid "Debug mode — add <code>?debug_bmp</code> to the URL to see active banners"
+msgstr "Mode débogage — ajoutez <code>?debug_bmp</code> à l'URL pour voir les bannières actives"
+
+#: admin/class-bmp-settings.php:596
+msgid "The plugin requires a <strong>license key</strong> in the format <code>BMP-XXXX-XXXX-XXXX</code>"
+msgstr "Le plugin nécessite une <strong>clé de licence</strong> au format <code>BMP-XXXX-XXXX-XXXX</code>"
+
+#: admin/class-bmp-settings.php:599
+msgid "The license is validated automatically every 72 hours"
+msgstr "La licence est validée automatiquement toutes les 72 heures"
+
+#: admin/class-bmp-settings.php:600
+msgid "Depending on your license: <strong>single-domain</strong> or <strong>multi-domain</strong> (unlimited)"
+msgstr "Selon votre licence : <strong>mono-domaine</strong> ou <strong>multi-domaine</strong> (illimitée)"
+
+#: admin/class-bmp-settings.php:601
+msgid "Updates are automatic via the WordPress admin"
+msgstr "Les mises à jour sont automatiques via l'administration WordPress"
+
+#: admin/class-bmp-settings.php:606
+msgid "Support"
+msgstr "Support"
+
+#: admin/class-bmp-settings.php:607
+msgid "For any questions or issues:"
+msgstr "Pour toute question ou problème :"
+
+#: admin/class-bmp-settings.php:609
+msgid "Email:"
+msgstr "E-mail :"
+
+#: admin/class-bmp-settings.php:610
+msgid "GitHub:"
+msgstr "GitHub :"
+
+#: premium/banner-cpt.php:46
+msgid "Banners"
+msgstr "Bannières"
+
+#: premium/banner-cpt.php:47
+msgid "Banner"
+msgstr "Bannière"
+
+#: premium/banner-cpt.php:49
+msgid "Add Banner"
+msgstr "Ajouter une bannière"
+
+#: premium/banner-cpt.php:50
+msgid "Add New Banner"
+msgstr "Ajouter une nouvelle bannière"
+
+#: premium/banner-cpt.php:51
+msgid "Edit Banner"
+msgstr "Modifier la bannière"
+
+#: premium/banner-cpt.php:52
+msgid "New Banner"
+msgstr "Nouvelle bannière"
+
+#: premium/banner-cpt.php:53
+msgid "View Banner"
+msgstr "Voir la bannière"
+
+#: premium/banner-cpt.php:54
+msgid "Search Banners"
+msgstr "Rechercher des bannières"
+
+#: premium/banner-cpt.php:55
+msgid "No banners found"
+msgstr "Aucune bannière trouvée"
+
+#: premium/banner-cpt.php:56
+msgid "No banners found in trash"
+msgstr "Aucune bannière trouvée dans la corbeille"
+
+#: premium/banner-cpt.php:91
+msgid "Status"
+msgstr "Statut"
+
+#: premium/banner-cpt.php:93
+msgid "Active"
+msgstr "Actif"
+
+#: premium/banner-cpt.php:94
+msgid "Inactive"
+msgstr "Inactif"
+
+#: premium/banner-cpt.php:110
+msgid "No image"
+msgstr "Aucune image"
+
+#: premium/banner-cpt.php:118
+msgid "Code present"
+msgstr "Code présent"
+
+#: premium/banner-cpt.php:120
+msgid "No code"
+msgstr "Aucun code"
+
+#: premium/banner-cpt.php:137
+msgid "After Header"
+msgstr "Après l'en-tête"
+
+#: premium/banner-cpt.php:138
+msgid "In Articles"
+msgstr "Dans les articles"
+
+#: premium/banner-cpt.php:152
+msgid "No position"
+msgstr "Aucune position"
+
+#: premium/banner-cpt.php:163
+msgid "Author"
+msgstr "Auteur"
+
+#: premium/banner-cpt.php:173
+msgid "All Statuses"
+msgstr "Tous les statuts"
+
+#: premium/banner-cpt.php:182
+msgid "All Types"
+msgstr "Tous les types"
+
+#: premium/banner-cpt.php:189
+msgid "All Devices"
+msgstr "Tous les appareils"
+
+#: premium/banner-cpt.php:192
+msgid "Desktop"
+msgstr "Bureau"
+
+#: premium/banner-cpt.php:193
+msgid "Mobile"
+msgstr "Mobile"
+
+#: premium/banner-cpt.php:194
+msgid "Both"
+msgstr "Les deux"
+
+#: premium/banner-cpt.php:198
+msgid "All Positions"
+msgstr "Toutes les positions"
+
+#: premium/banner-cpt.php:210
+msgid "Duplicate"
+msgstr "Dupliquer"
+
+#: premium/banner-cpt.php:220
+msgid "Unauthorized action."
+msgstr "Action non autorisée."
+
+#: premium/banner-cpt.php:225
+msgid "Banner not found."
+msgstr "Bannière introuvable."
+
+#: premium/popup-cpt.php:46
+msgid "Popup"
+msgstr "Popup"
+
+#: premium/popup-cpt.php:49
+msgid "Add Popup"
+msgstr "Ajouter un popup"
+
+#: premium/popup-cpt.php:50
+msgid "Add New Popup"
+msgstr "Ajouter un nouveau popup"
+
+#: premium/popup-cpt.php:51
+msgid "Edit Popup"
+msgstr "Modifier le popup"
+
+#: premium/popup-cpt.php:52
+msgid "New popup"
+msgstr "Nouveau popup"
+
+#: premium/popup-cpt.php:53
+msgid "View Popup"
+msgstr "Voir le popup"
+
+#: premium/popup-cpt.php:54
+msgid "Search Popups"
+msgstr "Rechercher des popups"
+
+#: premium/popup-cpt.php:55
+msgid "No popups found"
+msgstr "Aucun popup trouvé"
+
+#: premium/popup-cpt.php:56
+msgid "No popups found in trash"
+msgstr "Aucun popup trouvé dans la corbeille"
+
+#: premium/popup-cpt.php:72
+msgid "Frequency"
+msgstr "Fréquence"
+
+#: premium/popup-cpt.php:82
+msgid "Right"
+msgstr "Droite"
+
+#: premium/popup-cpt.php:83
+msgid "Left"
+msgstr "Gauche"
+
+#: premium/popup-cpt.php:100
+msgid "Once"
+msgstr "Une fois"
+
+#: premium/popup-cpt.php:143
+msgid "Popup not found."
+msgstr "Popup introuvable."
+
+#: premium/banner-meta.php:14
+msgid "Banner Details"
+msgstr "Détails de la bannière"
+
+#: premium/banner-meta.php:33
+msgid "Incomplete Configuration"
+msgstr "Configuration incomplète"
+
+#: premium/banner-meta.php:46
+msgid "Creative"
+msgstr "Créatif"
+
+#: premium/banner-meta.php:53
+msgid "Choose Image"
+msgstr "Choisir une image"
+
+#: premium/banner-meta.php:57
+msgid "No image selected."
+msgstr "Aucune image sélectionnée."
+
+#: premium/banner-meta.php:58
+msgid "Target Link"
+msgstr "Lien cible"
+
+#: premium/banner-meta.php:61
+msgid "No target link configured."
+msgstr "Aucun lien cible configuré."
+
+#: premium/banner-meta.php:65
+msgid "HTML / JavaScript Code"
+msgstr "Code HTML / JavaScript"
+
+#: premium/banner-meta.php:66
+msgid "Enter your HTML, JavaScript, or ad banner code here..."
+msgstr "Entrez votre code HTML, JavaScript ou bannière publicitaire ici..."
+
+#: premium/banner-meta.php:68
+msgid "HTML/JS code should only be used by trusted administrators."
+msgstr "Le code HTML/JS ne doit être utilisé que par des administrateurs de confiance."
+
+#: premium/banner-meta.php:73
+msgid "Format"
+msgstr "Format"
+
+#: premium/banner-meta.php:79
+msgid "Width (px)"
+msgstr "Largeur (px)"
+
+#: premium/banner-meta.php:80
+msgid "Height (px)"
+msgstr "Hauteur (px)"
+
+#: premium/banner-meta.php:83
+msgid "Position Suggestions"
+msgstr "Suggestions de position"
+
+#: premium/banner-meta.php:89
+msgid "Placement"
+msgstr "Emplacement"
+
+#: premium/banner-meta.php:96
+msgid "No position selected."
+msgstr "Aucune position sélectionnée."
+
+#: premium/banner-meta.php:101
+msgid "Preview"
+msgstr "Aperçu"
+
+#: premium/banner-meta.php:110
+msgid "Header (before content)"
+msgstr "En-tête (avant le contenu)"
+
+#: premium/banner-meta.php:111
+msgid "After Header (before content)"
+msgstr "Après l'en-tête (avant le contenu)"
+
+#: premium/banner-meta.php:112
+msgid "In Articles (after 1st paragraph)"
+msgstr "Dans les articles (après le 1er paragraphe)"
+
+#: premium/banner-meta.php:113
+msgid "Between Articles (archives, blog)"
+msgstr "Entre les articles (archives, blog)"
+
+#: premium/banner-meta.php:114
+msgid "Primary Sidebar"
+msgstr "Barre latérale principale"
+
+#: premium/banner-meta.php:115
+msgid "Secondary Sidebar"
+msgstr "Barre latérale secondaire"
+
+#: premium/banner-meta.php:116
+msgid "Footer (before footer area)"
+msgstr "Pied de page (avant la zone footer)"
+
+#: premium/banner-meta.php:121
+msgid "Select a format"
+msgstr "Sélectionner un format"
+
+#: premium/banner-meta.php:124
+msgid "Leaderboard"
+msgstr "Bannière large"
+
+#: premium/banner-meta.php:131
+msgid "Sidebar"
+msgstr "Barre latérale"
+
+#: premium/banner-meta.php:139
+msgid "Content"
+msgstr "Contenu"
+
+#: premium/banner-meta.php:144
+msgid "Social Media"
+msgstr "Réseaux sociaux"
+
+#: premium/banner-meta.php:150
+msgid "Custom Format"
+msgstr "Format personnalisé"
+
+#: premium/banner-meta.php:173
+msgid "No HTML code to preview."
+msgstr "Aucun code HTML à prévisualiser."
+
+#: premium/banner-meta.php:181
+msgid "Image not found."
+msgstr "Image introuvable."
+
+#: premium/banner-meta.php:200
+msgid "An active image banner must have an image."
+msgstr "Une bannière image active doit avoir une image."
+
+#: premium/banner-meta.php:203
+msgid "An active image banner must have a target link."
+msgstr "Une bannière image active doit avoir un lien cible."
+
+#: premium/banner-meta.php:206
+msgid "An active HTML banner must have HTML/JS code."
+msgstr "Une bannière HTML active doit avoir du code HTML/JS."
+
+#: premium/banner-meta.php:210
+msgid "An active banner must have at least one position."
+msgstr "Une bannière active doit avoir au moins une position."
+
+#: premium/banner-meta.php:222
+msgid "Banner duplicated as draft."
+msgstr "Bannière dupliquée en tant que brouillon."
+
+#: premium/banner-meta.php:234
+msgid "Incomplete banner configuration."
+msgstr "Configuration de bannière incomplète."
+
+#: premium/banner-meta.php:260
+msgid "Select a format to see suggestions"
+msgstr "Sélectionnez un format pour voir les suggestions"
+
+#: premium/banner-meta.php:280
+msgid "No suggestions for this format"
+msgstr "Aucune suggestion pour ce format"
+
+#: premium/popup-meta.php:14
+msgid "Popup Details"
+msgstr "Détails du popup"
+
+#: premium/popup-meta.php:59
+msgid "Post / Page"
+msgstr "Article / Page"
+
+#: premium/popup-meta.php:60
+msgid "Visual"
+msgstr "Visuel"
+
+#: premium/popup-meta.php:68
+msgid "Remove Image"
+msgstr "Supprimer l'image"
+
+#: premium/popup-meta.php:72
+msgid "Enter your HTML, JavaScript, or popup content here..."
+msgstr "Entrez votre code HTML, JavaScript ou contenu de popup ici..."
+
+#: premium/popup-meta.php:85
+msgid "Display Mode"
+msgstr "Mode d'affichage"
+
+#: premium/popup-meta.php:91
+msgid "Button Text"
+msgstr "Texte du bouton"
+
+#: premium/popup-meta.php:97
+msgid "Choose a Template"
+msgstr "Choisissez un template"
+
+#: premium/popup-meta.php:105
+msgid "Flash Sale"
+msgstr "Vente flash"
+
+#: premium/popup-meta.php:106
+msgid "Bold promo with urgency badge"
+msgstr "Promo percutante avec badge d'urgence"
+
+#: premium/popup-meta.php:112
+msgid "Lead Magnet"
+msgstr "Lead Magnet"
+
+#: premium/popup-meta.php:113
+msgid "Two-column download offer"
+msgstr "Offre de téléchargement en deux colonnes"
+
+#: premium/popup-meta.php:119
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: premium/popup-meta.php:120
+msgid "Clean signup with icon"
+msgstr "Inscription épurée avec icône"
+
+#: premium/popup-meta.php:126
+msgid "Video Spotlight"
+msgstr "Vidéo à la une"
+
+#: premium/popup-meta.php:127
+msgid "YouTube/Vimeo embed"
+msgstr "Intégration YouTube/Vimeo"
+
+#: premium/popup-meta.php:133
+msgid "Coupon Code"
+msgstr "Code promo"
+
+#: premium/popup-meta.php:134
+msgid "Discount code with copy"
+msgstr "Code de réduction avec copie"
+
+#: premium/popup-meta.php:140
+msgid "Announcement"
+msgstr "Annonce"
+
+#: premium/popup-meta.php:141
+msgid "Clean text-only notice"
+msgstr "Notification texte simple"
+
+#: premium/popup-meta.php:147
+msgid "Product Showcase"
+msgstr "Vitrine produit"
+
+#: premium/popup-meta.php:148
+msgid "Product with price tag"
+msgstr "Produit avec étiquette de prix"
+
+#: premium/popup-meta.php:154
+msgid "Testimonial"
+msgstr "Témoignage"
+
+#: premium/popup-meta.php:155
+msgid "Quote with author"
+msgstr "Citation avec auteur"
+
+#: premium/popup-meta.php:160
+msgid "Heading"
+msgstr "Titre"
+
+#: premium/popup-meta.php:164
+msgid "Body Text"
+msgstr "Texte principal"
+
+#: premium/popup-meta.php:170
+msgid "Button Link"
+msgstr "Lien du bouton"
+
+#: premium/popup-meta.php:175
+msgid "Video URL"
+msgstr "URL de la vidéo"
+
+#: premium/popup-meta.php:183
+msgid "Badge Text"
+msgstr "Texte du badge"
+
+#: premium/popup-meta.php:188
+msgid "Price"
+msgstr "Prix"
+
+#: premium/popup-meta.php:193
+msgid "Author Name"
+msgstr "Nom de l'auteur"
+
+#: premium/popup-meta.php:198
+msgid "Author Role"
+msgstr "Rôle de l'auteur"
+
+#: premium/popup-meta.php:206
+msgid "Design"
+msgstr "Design"
+
+#: premium/popup-meta.php:213
+msgid "Background"
+msgstr "Fond"
+
+#: premium/popup-meta.php:219
+msgid "CTA Button"
+msgstr "Bouton CTA"
+
+#: premium/popup-meta.php:226
+msgid "Animate button"
+msgstr "Animer le bouton"
+
+#: premium/popup-meta.php:230
+msgid "Close Button"
+msgstr "Bouton fermer"
+
+#: premium/popup-meta.php:253
+msgid "Icon"
+msgstr "Icône"
+
+#: premium/popup-meta.php:267
+msgid "Size"
+msgstr "Taille"
+
+#: premium/popup-meta.php:269
+msgid "Small (400px)"
+msgstr "Petit (400px)"
+
+#: premium/popup-meta.php:270
+msgid "Medium (600px)"
+msgstr "Moyen (600px)"
+
+#: premium/popup-meta.php:271
+msgid "Large (800px)"
+msgstr "Grand (800px)"
+
+#: premium/popup-meta.php:272
+msgid "Fullscreen"
+msgstr "Plein écran"
+
+#: premium/popup-meta.php:278
+msgid "Trigger Type"
+msgstr "Type de déclencheur"
+
+#: premium/popup-meta.php:281
+msgid "Immediate (on page load)"
+msgstr "Immédiat (au chargement)"
+
+#: premium/popup-meta.php:282
+msgid "After a delay"
+msgstr "Après un délai"
+
+#: premium/popup-meta.php:283
+msgid "On scroll"
+msgstr "Au scroll"
+
+#: premium/popup-meta.php:288
+msgid "Delay before display (seconds)"
+msgstr "Délai avant affichage (secondes)"
+
+#: premium/popup-meta.php:290
+msgid "Default: 5 seconds"
+msgstr "Par défaut : 5 secondes"
+
+#: premium/popup-meta.php:293
+msgid "Scroll (%)"
+msgstr "Défilement (%)"
+
+#: premium/popup-meta.php:297
+msgid "Display duration (seconds)"
+msgstr "Durée d'affichage (secondes)"
+
+#: premium/popup-meta.php:299
+msgid "0 = stays visible until manually closed"
+msgstr "0 = reste visible jusqu'à la fermeture manuelle"
+
+#: premium/popup-meta.php:304
+msgid "Device"
+msgstr "Appareil"
+
+#: premium/popup-meta.php:312
+msgid "Display On"
+msgstr "Afficher sur"
+
+#: premium/popup-meta.php:315
+msgid "Entire Site"
+msgstr "Tout le site"
+
+#: premium/popup-meta.php:316
+msgid "All Posts"
+msgstr "Tous les articles"
+
+#: premium/popup-meta.php:317
+msgid "All Pages"
+msgstr "Toutes les pages"
+
+#: premium/popup-meta.php:318
+msgid "Specific Post"
+msgstr "Article spécifique"
+
+#: premium/popup-meta.php:319
+msgid "Specific Page"
+msgstr "Page spécifique"
+
+#: premium/popup-meta.php:320
+msgid "A Category"
+msgstr "Une catégorie"
+
+#: premium/popup-meta.php:321
+msgid "Homepage Only"
+msgstr "Page d'accueil uniquement"
+
+#: premium/popup-meta.php:326
+msgid "Post"
+msgstr "Article"
+
+#: premium/popup-meta.php:327
+msgid "— Select —"
+msgstr "— Sélectionner —"
+
+#: premium/popup-meta.php:340
+msgid "Page"
+msgstr "Page"
+
+#: premium/popup-meta.php:349
+msgid "Category"
+msgstr "Catégorie"
+
+#: premium/popup-meta.php:358
+msgid "Every Visit"
+msgstr "À chaque visite"
+
+#: premium/popup-meta.php:359
+msgid "Once Per Session"
+msgstr "Une fois par session"
+
+#: premium/popup-meta.php:360
+msgid "Once Per Day"
+msgstr "Une fois par jour"
+
+#: premium/popup-meta.php:361
+msgid "Once Per Week"
+msgstr "Une fois par semaine"
+
+#: premium/popup-meta.php:362
+msgid "Only Once"
+msgstr "Une seule fois"
+
+#: premium/popup-meta.php:367
+msgid "Priority"
+msgstr "Priorité"
+
+#: premium/popup-meta.php:368
+msgid "When multiple popups target the same page, the one with the highest priority is displayed. Popups with equal priority rotate randomly."
+msgstr "Lorsque plusieurs popups ciblent la même page, celui avec la priorité la plus élevée est affiché. Les popups de même priorité alternent aléatoirement."
+
+#: premium/popup-meta.php:384
+msgid "An active image popup must have an image."
+msgstr "Un popup image actif doit avoir une image."
+
+#: premium/popup-meta.php:389
+msgid "An active post popup must have a post selected."
+msgstr "Un popup article actif doit avoir un article sélectionné."
+
+#: premium/popup-meta.php:393
+msgid "An active Visual popup must have a template selected."
+msgstr "Un popup Visuel actif doit avoir un template sélectionné."
+
+#: premium/popup-meta.php:397
+msgid "This template requires an image."
+msgstr "Ce template nécessite une image."
+
+#: premium/popup-meta.php:401
+msgid "Video Spotlight requires a video URL."
+msgstr "Vidéo à la une nécessite une URL vidéo."
+
+#: premium/popup-meta.php:405
+msgid "Coupon Code requires a coupon code."
+msgstr "Code promo nécessite un code promo."
+
+#: premium/popup-meta.php:408
+msgid "An active HTML popup must have HTML/JS code."
+msgstr "Un popup HTML actif doit avoir du code HTML/JS."
+
+#: premium/popup-meta.php:418
+msgid "Popup duplicated as draft."
+msgstr "Popup dupliqué en tant que brouillon."
+
+#: premium/popup-meta.php:430
+msgid "Incomplete popup configuration."
+msgstr "Configuration de popup incomplète."
+
+#: premium/banner-frontend.php:44
+msgid "BMP DEBUG - Banner List"
+msgstr "BMP DEBUG - Liste des bannières"
+
+#: premium/banner-frontend.php:52
+msgid "Status:"
+msgstr "Statut :"
+
+#: premium/banner-frontend.php:52
+msgid "Type:"
+msgstr "Type :"
+
+#: premium/banner-frontend.php:52
+msgid "Device:"
+msgstr "Appareil :"
+
+#: premium/banner-frontend.php:53
+msgid "Positions:"
+msgstr "Positions :"
+
+#: premium/banner-frontend.php:55
+msgid "Image ID:"
+msgstr "ID image :"
+
+#: premium/banner-frontend.php:57
+msgid "HTML Code:"
+msgstr "Code HTML :"
+
+#: premium/banner-frontend.php:57
+msgid "Present"
+msgstr "Présent"
+
+#: premium/banner-frontend.php:57
+msgid "chars"
+msgstr "caractères"
+
+#: premium/banner-frontend.php:57
+msgid "Empty"
+msgstr "Vide"
+
+#: premium/banner-frontend.php:62
+msgid "No banners found."
+msgstr "Aucune bannière trouvée."
+
+#: premium/popup-frontend.php:88
+msgid "Close"
+msgstr "Fermer"
+
+#: admin/js/bmp-popup-admin-cpt.js:67
+msgid "No HTML code."
+msgstr "Aucun code HTML."
+
+#: admin/js/bmp-popup-admin-cpt.js:81
+msgid "Choose a template."
+msgstr "Choisissez un template."
+
+#: admin/js/bmp-popup-admin-cpt.js:181
+msgid "Remove"
+msgstr "Supprimer"
+
+#: admin/js/bmp-popup-admin-cpt.js:208
+msgid "WordPress media library is not available."
+msgstr "La bibliothèque média WordPress n'est pas disponible."
+
+#: admin/js/bmp-popup-admin-cpt.js:212
+msgid "Choose an image"
+msgstr "Choisir une image"
+
+#: admin/js/bmp-popup-admin-cpt.js:213
+msgid "Use this image"
+msgstr "Utiliser cette image"

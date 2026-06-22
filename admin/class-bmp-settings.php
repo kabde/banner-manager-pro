@@ -105,7 +105,7 @@ class BMP_Settings {
 
     public function render() {
         if ( ! current_user_can( 'manage_options' ) ) {
-            wp_die( 'You do not have sufficient permissions.' );
+            wp_die( esc_html__( 'You do not have sufficient permissions.', 'banner-manager-pro' ) );
         }
 
         $licensed      = bmp_is_licensed();
@@ -114,11 +114,11 @@ class BMP_Settings {
         $defaults      = bmp_settings_defaults();
         $s             = wp_parse_args( $settings, $defaults );
         $tabs = [
-            'license'  => [ 'label' => 'Licence',   'icon' => 'dashicons-lock' ],
-            'general'  => [ 'label' => 'General',   'icon' => 'dashicons-admin-settings' ],
-            'display'  => [ 'label' => 'Display',   'icon' => 'dashicons-visibility' ],
-            'advanced' => [ 'label' => 'Advanced',  'icon' => 'dashicons-admin-generic' ],
-            'docs'     => [ 'label' => 'Documentation', 'icon' => 'dashicons-book' ],
+            'license'  => [ 'label' => __( 'License', 'banner-manager-pro' ),       'icon' => 'dashicons-lock' ],
+            'general'  => [ 'label' => __( 'General', 'banner-manager-pro' ),       'icon' => 'dashicons-admin-settings' ],
+            'display'  => [ 'label' => __( 'Display', 'banner-manager-pro' ),       'icon' => 'dashicons-visibility' ],
+            'advanced' => [ 'label' => __( 'Advanced', 'banner-manager-pro' ),      'icon' => 'dashicons-admin-generic' ],
+            'docs'     => [ 'label' => __( 'Documentation', 'banner-manager-pro' ), 'icon' => 'dashicons-book' ],
         ];
 
         // Only show non-license tabs when licensed
@@ -216,23 +216,23 @@ class BMP_Settings {
                     <!-- ═══ License Tab ═══ -->
                     <div id="bmp-tab-license" class="bmp-tab-content">
                         <div class="bmp-admin-section">
-                            <h2>Licence</h2>
+                            <h2><?php esc_html_e( 'License', 'banner-manager-pro' ); ?></h2>
                             <div class="bmp-license-card">
                                 <?php if ( $licensed ) : ?>
                                     <div style="text-align:center;margin-bottom:20px;">
-                                        <span class="bmp-license-active">&#10003; Licence Active</span>
+                                        <span class="bmp-license-active">&#10003; <?php esc_html_e( 'License Active', 'banner-manager-pro' ); ?></span>
                                     </div>
                                     <table class="form-table" style="margin:0;">
                                         <tr>
-                                            <th>Cl&eacute; de licence</th>
+                                            <th><?php esc_html_e( 'License Key', 'banner-manager-pro' ); ?></th>
                                             <td><code style="font-size:14px;"><?php echo esc_html( $license_key ); ?></code></td>
                                         </tr>
                                         <tr>
-                                            <th>Domaine</th>
+                                            <th><?php esc_html_e( 'Domain', 'banner-manager-pro' ); ?></th>
                                             <td><?php echo esc_html( home_url() ); ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Expiration</th>
+                                            <th><?php esc_html_e( 'Expiration', 'banner-manager-pro' ); ?></th>
                                             <td>
                                                 <?php
                                                 $expires = get_option( 'bmp_license_expires_at', '' );
@@ -240,30 +240,33 @@ class BMP_Settings {
                                                     $days = (int) ceil( ( strtotime( $expires ) - time() ) / 86400 );
                                                     $date_formatted = wp_date( 'd F Y', strtotime( $expires ) );
                                                     if ( $days <= 0 ) {
-                                                        echo '<span style="color:#dc2626;font-weight:600;">Expirée le ' . esc_html( $date_formatted ) . '</span>';
+                                                        /* translators: %s: formatted expiration date */
+                                                        echo '<span style="color:#dc2626;font-weight:600;">' . sprintf( esc_html__( 'Expired on %s', 'banner-manager-pro' ), esc_html( $date_formatted ) ) . '</span>';
                                                     } elseif ( $days <= 30 ) {
-                                                        echo '<span style="color:#d97706;font-weight:600;">' . esc_html( $date_formatted ) . ' (' . $days . ' jour' . ($days > 1 ? 's' : '') . ' restants)</span>';
+                                                        /* translators: 1: formatted date, 2: number of days remaining */
+                                                        echo '<span style="color:#d97706;font-weight:600;">' . esc_html( $date_formatted ) . ' (' . sprintf( _n( '%d day remaining', '%d days remaining', $days, 'banner-manager-pro' ), $days ) . ')</span>';
                                                     } else {
-                                                        echo '<span style="color:#16a34a;">' . esc_html( $date_formatted ) . ' (' . $days . ' jours restants)</span>';
+                                                        /* translators: 1: formatted date, 2: number of days remaining */
+                                                        echo '<span style="color:#16a34a;">' . esc_html( $date_formatted ) . ' (' . sprintf( _n( '%d day remaining', '%d days remaining', $days, 'banner-manager-pro' ), $days ) . ')</span>';
                                                     }
                                                 } else {
-                                                    echo '<span style="color:#16a34a;">Lifetime</span>';
+                                                    echo '<span style="color:#16a34a;">' . esc_html__( 'Lifetime', 'banner-manager-pro' ) . '</span>';
                                                 }
                                                 ?>
                                             </td>
                                         </tr>
                                     </table>
                                     <p style="margin-top:20px;">
-                                        <button type="button" id="bmp-deactivate-btn" class="button button-secondary" style="color:#d63638;">D&eacute;sactiver la licence</button>
+                                        <button type="button" id="bmp-deactivate-btn" class="button button-secondary" style="color:#d63638;"><?php esc_html_e( 'Deactivate License', 'banner-manager-pro' ); ?></button>
                                     </p>
                                 <?php else : ?>
-                                    <h2 style="margin-top:0;">Activez votre licence</h2>
-                                    <p>Entrez votre cl&eacute; de licence pour activer Banner Manager Pro.</p>
+                                    <h2 style="margin-top:0;"><?php esc_html_e( 'Activate Your License', 'banner-manager-pro' ); ?></h2>
+                                    <p><?php esc_html_e( 'Enter your license key to activate Banner Manager Pro.', 'banner-manager-pro' ); ?></p>
                                     <p>
                                         <input type="text" id="bmp-license-key" placeholder="BMP-XXXX-XXXX-XXXX" style="width:100%;font-size:16px;padding:8px 12px;font-family:monospace;text-transform:uppercase;" maxlength="19">
                                     </p>
                                     <p>
-                                        <button type="button" id="bmp-activate-btn" class="button button-primary button-hero" style="width:100%;">Activer la licence</button>
+                                        <button type="button" id="bmp-activate-btn" class="button button-primary button-hero" style="width:100%;"><?php esc_html_e( 'Activate License', 'banner-manager-pro' ); ?></button>
                                     </p>
                                     <div id="bmp-license-message" style="margin-top:15px;display:none;"></div>
                                 <?php endif; ?>
@@ -281,28 +284,28 @@ class BMP_Settings {
                         <!-- ═══ General Tab ═══ -->
                         <div id="bmp-tab-general" class="bmp-tab-content">
                             <div class="bmp-admin-section">
-                                <h2>General Settings</h2>
+                                <h2><?php esc_html_e( 'General Settings', 'banner-manager-pro' ); ?></h2>
                                 <table class="form-table">
                                     <tr>
-                                        <th scope="row">Enable Banners</th>
+                                        <th scope="row"><?php esc_html_e( 'Enable Banners', 'banner-manager-pro' ); ?></th>
                                         <td>
                                             <label>
                                                 <input type="checkbox" name="bmp_settings[enable_banners]" value="1" <?php checked( $s['enable_banners'], 1 ); ?>>
-                                                Enable frontend banner display globally
+                                                <?php esc_html_e( 'Enable frontend banner display globally', 'banner-manager-pro' ); ?>
                                             </label>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Default Link Target</th>
+                                        <th scope="row"><?php esc_html_e( 'Default Link Target', 'banner-manager-pro' ); ?></th>
                                         <td>
                                             <select name="bmp_settings[default_link_target]">
-                                                <option value="_blank" <?php selected( $s['default_link_target'], '_blank' ); ?>>_blank (new tab)</option>
-                                                <option value="_self" <?php selected( $s['default_link_target'], '_self' ); ?>>_self (same tab)</option>
+                                                <option value="_blank" <?php selected( $s['default_link_target'], '_blank' ); ?>><?php esc_html_e( '_blank (new tab)', 'banner-manager-pro' ); ?></option>
+                                                <option value="_self" <?php selected( $s['default_link_target'], '_self' ); ?>><?php esc_html_e( '_self (same tab)', 'banner-manager-pro' ); ?></option>
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Default Link Rel</th>
+                                        <th scope="row"><?php esc_html_e( 'Default Link Rel', 'banner-manager-pro' ); ?></th>
                                         <td>
                                             <label style="display:block;margin-bottom:6px;">
                                                 <input type="checkbox" name="bmp_settings[rel_nofollow]" value="1" <?php checked( $s['rel_nofollow'], 1 ); ?>>
@@ -319,132 +322,132 @@ class BMP_Settings {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Lazy Loading</th>
+                                        <th scope="row"><?php esc_html_e( 'Lazy Loading', 'banner-manager-pro' ); ?></th>
                                         <td>
                                             <label>
                                                 <input type="checkbox" name="bmp_settings[lazy_loading]" value="1" <?php checked( $s['lazy_loading'], 1 ); ?>>
-                                                Add <code>loading="lazy"</code> to banner images
+                                                <?php /* translators: keep the HTML code tag as-is */ echo __( 'Add <code>loading="lazy"</code> to banner images', 'banner-manager-pro' ); ?>
                                             </label>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="submit">
-                                <?php submit_button( 'Save Settings', 'primary', 'submit', false ); ?>
+                                <?php submit_button( __( 'Save Settings', 'banner-manager-pro' ), 'primary', 'submit', false ); ?>
                             </div>
                         </div>
 
                         <!-- ═══ Display Tab ═══ -->
                         <div id="bmp-tab-display" class="bmp-tab-content">
                             <div class="bmp-admin-section">
-                                <h2>Banner Positions</h2>
-                                <p style="color:#6b7280;margin:0 0 16px;">Overview of available banner positions and the hooks they use.</p>
+                                <h2><?php esc_html_e( 'Banner Positions', 'banner-manager-pro' ); ?></h2>
+                                <p style="color:#6b7280;margin:0 0 16px;"><?php esc_html_e( 'Overview of available banner positions and the hooks they use.', 'banner-manager-pro' ); ?></p>
                                 <table class="bmp-positions-table">
                                     <thead>
                                         <tr>
-                                            <th>Position</th>
-                                            <th>Hook / Method</th>
-                                            <th>Description</th>
+                                            <th><?php esc_html_e( 'Position', 'banner-manager-pro' ); ?></th>
+                                            <th><?php esc_html_e( 'Hook / Method', 'banner-manager-pro' ); ?></th>
+                                            <th><?php esc_html_e( 'Description', 'banner-manager-pro' ); ?></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><strong>Header</strong></td>
+                                            <td><strong><?php esc_html_e( 'Header', 'banner-manager-pro' ); ?></strong></td>
                                             <td><code>wp_body_open</code></td>
-                                            <td>Displayed right after the opening &lt;body&gt; tag</td>
+                                            <td><?php esc_html_e( 'Displayed right after the opening <body> tag', 'banner-manager-pro' ); ?></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Footer</strong></td>
+                                            <td><strong><?php esc_html_e( 'Footer', 'banner-manager-pro' ); ?></strong></td>
                                             <td><code>get_footer</code></td>
-                                            <td>Displayed before the footer area</td>
+                                            <td><?php esc_html_e( 'Displayed before the footer area', 'banner-manager-pro' ); ?></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Sidebar 1</strong></td>
+                                            <td><strong><?php esc_html_e( 'Sidebar 1', 'banner-manager-pro' ); ?></strong></td>
                                             <td><code>get_sidebar</code></td>
-                                            <td>Injected into the primary sidebar</td>
+                                            <td><?php esc_html_e( 'Injected into the primary sidebar', 'banner-manager-pro' ); ?></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Sidebar 2</strong></td>
+                                            <td><strong><?php esc_html_e( 'Sidebar 2', 'banner-manager-pro' ); ?></strong></td>
                                             <td><code>get_sidebar</code></td>
-                                            <td>Injected into the secondary sidebar</td>
+                                            <td><?php esc_html_e( 'Injected into the secondary sidebar', 'banner-manager-pro' ); ?></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>In Article</strong></td>
+                                            <td><strong><?php esc_html_e( 'In Article', 'banner-manager-pro' ); ?></strong></td>
                                             <td><code>the_content</code></td>
-                                            <td>Inserted within post content at configured position</td>
+                                            <td><?php esc_html_e( 'Inserted within post content at configured position', 'banner-manager-pro' ); ?></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Between Articles</strong></td>
+                                            <td><strong><?php esc_html_e( 'Between Articles', 'banner-manager-pro' ); ?></strong></td>
                                             <td><code>loop_end</code></td>
-                                            <td>Displayed between posts in archive/loop pages</td>
+                                            <td><?php esc_html_e( 'Displayed between posts in archive/loop pages', 'banner-manager-pro' ); ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
 
                             <div class="bmp-admin-section">
-                                <h2>Display Options</h2>
+                                <h2><?php esc_html_e( 'Display Options', 'banner-manager-pro' ); ?></h2>
                                 <table class="form-table">
                                     <tr>
-                                        <th scope="row">In-Article Position</th>
+                                        <th scope="row"><?php esc_html_e( 'In-Article Position', 'banner-manager-pro' ); ?></th>
                                         <td>
                                             <select name="bmp_settings[in_article_position]">
-                                                <option value="after_1" <?php selected( $s['in_article_position'], 'after_1' ); ?>>After 1st paragraph</option>
-                                                <option value="after_2" <?php selected( $s['in_article_position'], 'after_2' ); ?>>After 2nd paragraph</option>
-                                                <option value="after_3" <?php selected( $s['in_article_position'], 'after_3' ); ?>>After 3rd paragraph</option>
-                                                <option value="end" <?php selected( $s['in_article_position'], 'end' ); ?>>End of content</option>
+                                                <option value="after_1" <?php selected( $s['in_article_position'], 'after_1' ); ?>><?php esc_html_e( 'After 1st paragraph', 'banner-manager-pro' ); ?></option>
+                                                <option value="after_2" <?php selected( $s['in_article_position'], 'after_2' ); ?>><?php esc_html_e( 'After 2nd paragraph', 'banner-manager-pro' ); ?></option>
+                                                <option value="after_3" <?php selected( $s['in_article_position'], 'after_3' ); ?>><?php esc_html_e( 'After 3rd paragraph', 'banner-manager-pro' ); ?></option>
+                                                <option value="end" <?php selected( $s['in_article_position'], 'end' ); ?>><?php esc_html_e( 'End of content', 'banner-manager-pro' ); ?></option>
                                             </select>
-                                            <p class="description">Where to insert in-article banners within post content.</p>
+                                            <p class="description"><?php esc_html_e( 'Where to insert in-article banners within post content.', 'banner-manager-pro' ); ?></p>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Animation</th>
+                                        <th scope="row"><?php esc_html_e( 'Animation', 'banner-manager-pro' ); ?></th>
                                         <td>
                                             <select name="bmp_settings[animation]">
-                                                <option value="none" <?php selected( $s['animation'], 'none' ); ?>>None</option>
-                                                <option value="fade_in" <?php selected( $s['animation'], 'fade_in' ); ?>>Fade In</option>
-                                                <option value="slide_up" <?php selected( $s['animation'], 'slide_up' ); ?>>Slide Up</option>
+                                                <option value="none" <?php selected( $s['animation'], 'none' ); ?>><?php esc_html_e( 'None', 'banner-manager-pro' ); ?></option>
+                                                <option value="fade_in" <?php selected( $s['animation'], 'fade_in' ); ?>><?php esc_html_e( 'Fade In', 'banner-manager-pro' ); ?></option>
+                                                <option value="slide_up" <?php selected( $s['animation'], 'slide_up' ); ?>><?php esc_html_e( 'Slide Up', 'banner-manager-pro' ); ?></option>
                                             </select>
-                                            <p class="description">CSS animation applied when banners appear on screen.</p>
+                                            <p class="description"><?php esc_html_e( 'CSS animation applied when banners appear on screen.', 'banner-manager-pro' ); ?></p>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="submit">
-                                <?php submit_button( 'Save Settings', 'primary', 'submit', false ); ?>
+                                <?php submit_button( __( 'Save Settings', 'banner-manager-pro' ), 'primary', 'submit', false ); ?>
                             </div>
                         </div>
 
                         <!-- ═══ Advanced Tab ═══ -->
                         <div id="bmp-tab-advanced" class="bmp-tab-content">
                             <div class="bmp-admin-section">
-                                <h2>Custom CSS</h2>
+                                <h2><?php esc_html_e( 'Custom CSS', 'banner-manager-pro' ); ?></h2>
                                 <table class="form-table">
                                     <tr>
-                                        <th scope="row">Custom CSS</th>
+                                        <th scope="row"><?php esc_html_e( 'Custom CSS', 'banner-manager-pro' ); ?></th>
                                         <td>
                                             <textarea id="bmp_custom_css" name="bmp_settings[custom_css]" rows="12" style="width:100%;font-family:monospace;"><?php echo esc_textarea( $s['custom_css'] ); ?></textarea>
-                                            <p class="description">Add custom CSS to style banners on the front-end.</p>
+                                            <p class="description"><?php esc_html_e( 'Add custom CSS to style banners on the front-end.', 'banner-manager-pro' ); ?></p>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="bmp-admin-section">
-                                <h2>Debug</h2>
+                                <h2><?php esc_html_e( 'Debug', 'banner-manager-pro' ); ?></h2>
                                 <table class="form-table">
                                     <tr>
-                                        <th scope="row">Debug Mode</th>
+                                        <th scope="row"><?php esc_html_e( 'Debug Mode', 'banner-manager-pro' ); ?></th>
                                         <td>
                                             <label>
                                                 <input type="checkbox" name="bmp_settings[debug_mode]" value="1" <?php checked( $s['debug_mode'], 1 ); ?>>
-                                                Enable <code>?debug_bmp</code> query parameter for administrators
+                                                <?php /* translators: keep the HTML code tag as-is */ echo __( 'Enable <code>?debug_bmp</code> query parameter for administrators', 'banner-manager-pro' ); ?>
                                             </label>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="submit">
-                                <?php submit_button( 'Save Settings', 'primary', 'submit', false ); ?>
+                                <?php submit_button( __( 'Save Settings', 'banner-manager-pro' ), 'primary', 'submit', false ); ?>
                             </div>
                         </div>
 
@@ -454,157 +457,157 @@ class BMP_Settings {
                     <div id="bmp-tab-docs" class="bmp-tab-content">
 
                         <div class="bmp-admin-section">
-                            <h2>Premiers pas</h2>
+                            <h2><?php esc_html_e( 'Getting Started', 'banner-manager-pro' ); ?></h2>
                             <ol style="line-height:2;font-size:14px;color:#374151;">
-                                <li>Allez dans <strong>Bannières → Ajouter une bannière</strong></li>
-                                <li>Donnez un <strong>titre</strong> à votre bannière</li>
-                                <li>Choisissez le <strong>type</strong> : Image ou HTML/JS</li>
-                                <li>Pour une image : uploadez l'image et ajoutez un lien cible</li>
-                                <li>Sélectionnez les <strong>emplacements</strong> où afficher la bannière</li>
-                                <li>Choisissez le <strong>ciblage par appareil</strong> (Desktop, Mobile, ou les deux)</li>
-                                <li><strong>Publiez</strong> — la bannière s'affiche immédiatement</li>
+                                <li><?php echo __( 'Go to <strong>Banners &rarr; Add New Banner</strong>', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( 'Give your banner a <strong>title</strong>', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( 'Choose the <strong>type</strong>: Image or HTML/JS', 'banner-manager-pro' ); ?></li>
+                                <li><?php esc_html_e( 'For an image: upload the image and add a destination link', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( 'Select the <strong>positions</strong> where the banner should appear', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( 'Choose the <strong>device targeting</strong> (Desktop, Mobile, or Both)', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( '<strong>Publish</strong> — the banner is displayed immediately', 'banner-manager-pro' ); ?></li>
                             </ol>
                         </div>
 
                         <div class="bmp-admin-section">
-                            <h2>Types de bannières</h2>
+                            <h2><?php esc_html_e( 'Banner Types', 'banner-manager-pro' ); ?></h2>
                             <table class="widefat striped" style="max-width:700px;">
-                                <thead><tr><th>Type</th><th>Usage</th></tr></thead>
+                                <thead><tr><th><?php esc_html_e( 'Type', 'banner-manager-pro' ); ?></th><th><?php esc_html_e( 'Usage', 'banner-manager-pro' ); ?></th></tr></thead>
                                 <tbody>
-                                    <tr><td><strong>Image</strong></td><td>Bannière visuelle avec lien cliquable. Idéal pour les promotions, affiliations, et publicités display.</td></tr>
-                                    <tr><td><strong>HTML/JS</strong></td><td>Code personnalisé (AdSense, réseaux publicitaires, widgets). Le code est inséré tel quel.</td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Image', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Visual banner with clickable link. Ideal for promotions, affiliates, and display ads.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'HTML/JS', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Custom code (AdSense, ad networks, widgets). The code is inserted as-is.', 'banner-manager-pro' ); ?></td></tr>
                                 </tbody>
                             </table>
                         </div>
 
                         <div class="bmp-admin-section">
-                            <h2>Emplacements disponibles</h2>
+                            <h2><?php esc_html_e( 'Available Positions', 'banner-manager-pro' ); ?></h2>
                             <table class="widefat striped" style="max-width:700px;">
-                                <thead><tr><th>Emplacement</th><th>Position</th><th>Hook WordPress</th></tr></thead>
+                                <thead><tr><th><?php esc_html_e( 'Position', 'banner-manager-pro' ); ?></th><th><?php esc_html_e( 'Location', 'banner-manager-pro' ); ?></th><th><?php esc_html_e( 'WordPress Hook', 'banner-manager-pro' ); ?></th></tr></thead>
                                 <tbody>
-                                    <tr><td><strong>En-tête</strong></td><td>Haut de page, après l'ouverture du body</td><td><code>wp_body_open</code></td></tr>
-                                    <tr><td><strong>Pied de page</strong></td><td>Avant le footer</td><td><code>get_footer</code></td></tr>
-                                    <tr><td><strong>Sidebar 1</strong></td><td>Barre latérale principale</td><td><code>get_sidebar</code></td></tr>
-                                    <tr><td><strong>Sidebar 2</strong></td><td>Barre latérale secondaire</td><td><code>get_sidebar</code></td></tr>
-                                    <tr><td><strong>Dans les articles</strong></td><td>Après le 1er paragraphe d'un article</td><td><code>the_content</code></td></tr>
-                                    <tr><td><strong>Entre les articles</strong></td><td>Dans les listes d'articles (blog, archives)</td><td><code>loop_end</code></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Header', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Top of page, after the body opening tag', 'banner-manager-pro' ); ?></td><td><code>wp_body_open</code></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Footer', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Before the footer', 'banner-manager-pro' ); ?></td><td><code>get_footer</code></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Sidebar 1', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Primary sidebar', 'banner-manager-pro' ); ?></td><td><code>get_sidebar</code></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Sidebar 2', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Secondary sidebar', 'banner-manager-pro' ); ?></td><td><code>get_sidebar</code></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'In Article', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'After the 1st paragraph of a post', 'banner-manager-pro' ); ?></td><td><code>the_content</code></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Between Articles', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'In post listings (blog, archives)', 'banner-manager-pro' ); ?></td><td><code>loop_end</code></td></tr>
                                 </tbody>
                             </table>
                         </div>
 
                         <div class="bmp-admin-section">
-                            <h2>Shortcode</h2>
+                            <h2><?php esc_html_e( 'Shortcode', 'banner-manager-pro' ); ?></h2>
                             <table class="widefat striped" style="max-width:700px;">
-                                <thead><tr><th>Shortcode</th><th>Description</th></tr></thead>
+                                <thead><tr><th><?php esc_html_e( 'Shortcode', 'banner-manager-pro' ); ?></th><th><?php esc_html_e( 'Description', 'banner-manager-pro' ); ?></th></tr></thead>
                                 <tbody>
-                                    <tr><td><code>[bmp_banner location="header"]</code></td><td>Affiche les bannières assignées à l'emplacement "header"</td></tr>
-                                    <tr><td><code>[bmp_banner location="sidebar1" limit="2"]</code></td><td>Affiche 2 bannières max de la sidebar 1</td></tr>
+                                    <tr><td><code>[bmp_banner location="header"]</code></td><td><?php esc_html_e( 'Displays banners assigned to the "header" position', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><code>[bmp_banner location="sidebar1" limit="2"]</code></td><td><?php esc_html_e( 'Displays up to 2 banners from sidebar 1', 'banner-manager-pro' ); ?></td></tr>
                                 </tbody>
                             </table>
-                            <p style="color:#6b7280;margin-top:8px;font-size:13px;">Emplacements disponibles : <code>header</code>, <code>footer</code>, <code>sidebar1</code>, <code>sidebar2</code>, <code>in_article</code>, <code>in_listing</code></p>
+                            <p style="color:#6b7280;margin-top:8px;font-size:13px;"><?php esc_html_e( 'Available positions:', 'banner-manager-pro' ); ?> <code>header</code>, <code>footer</code>, <code>sidebar1</code>, <code>sidebar2</code>, <code>in_article</code>, <code>in_listing</code></p>
                         </div>
 
                         <div class="bmp-admin-section">
-                            <h2>Popups</h2>
-                            <p style="color:#374151;">Les popups sont gérés via un menu dédié <strong>Popups</strong> dans la barre latérale WordPress.</p>
-                            <h3>Positions</h3>
+                            <h2><?php esc_html_e( 'Popups', 'banner-manager-pro' ); ?></h2>
+                            <p style="color:#374151;"><?php echo __( 'Popups are managed via a dedicated <strong>Popups</strong> menu in the WordPress sidebar.', 'banner-manager-pro' ); ?></p>
+                            <h3><?php esc_html_e( 'Positions', 'banner-manager-pro' ); ?></h3>
                             <table class="widefat striped" style="max-width:700px;">
-                                <thead><tr><th>Position</th><th>Comportement</th></tr></thead>
+                                <thead><tr><th><?php esc_html_e( 'Position', 'banner-manager-pro' ); ?></th><th><?php esc_html_e( 'Behavior', 'banner-manager-pro' ); ?></th></tr></thead>
                                 <tbody>
-                                    <tr><td><strong>Centre</strong></td><td>Modal centré avec overlay sombre. Tailles : petit, moyen, grand, plein écran.</td></tr>
-                                    <tr><td><strong>Droite / Gauche</strong></td><td>Panneau qui glisse depuis le côté. 380px sur desktop, 100% sur mobile.</td></tr>
-                                    <tr><td><strong>Bas</strong></td><td>Barre de notification fixée en bas de l'écran.</td></tr>
-                                    <tr><td><strong>Haut</strong></td><td>Barre d'annonce fixée en haut de l'écran.</td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Center', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Centered modal with dark overlay. Sizes: small, medium, large, fullscreen.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Right / Left', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Slide-in panel from the side. 380px on desktop, 100% on mobile.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Bottom', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Notification bar fixed at the bottom of the screen.', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Top', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Announcement bar fixed at the top of the screen.', 'banner-manager-pro' ); ?></td></tr>
                                 </tbody>
                             </table>
 
-                            <h3 style="margin-top:20px;">Déclencheurs</h3>
+                            <h3 style="margin-top:20px;"><?php esc_html_e( 'Triggers', 'banner-manager-pro' ); ?></h3>
                             <table class="widefat striped" style="max-width:700px;">
-                                <thead><tr><th>Déclencheur</th><th>Comportement</th></tr></thead>
+                                <thead><tr><th><?php esc_html_e( 'Trigger', 'banner-manager-pro' ); ?></th><th><?php esc_html_e( 'Behavior', 'banner-manager-pro' ); ?></th></tr></thead>
                                 <tbody>
-                                    <tr><td><strong>Immédiat</strong></td><td>S'affiche dès le chargement de la page</td></tr>
-                                    <tr><td><strong>Délai</strong></td><td>S'affiche après X secondes (configurable)</td></tr>
-                                    <tr><td><strong>Scroll</strong></td><td>S'affiche quand le visiteur a scrollé X% de la page</td></tr>
-                                    <tr><td><strong>Exit intent</strong></td><td>S'affiche quand la souris quitte la fenêtre (desktop uniquement)</td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Immediate', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Displays as soon as the page loads', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Delay', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Displays after X seconds (configurable)', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Scroll', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Displays when the visitor has scrolled X% of the page', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Exit intent', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Displays when the mouse leaves the window (desktop only)', 'banner-manager-pro' ); ?></td></tr>
                                 </tbody>
                             </table>
 
-                            <h3 style="margin-top:20px;">Fréquence d'affichage</h3>
+                            <h3 style="margin-top:20px;"><?php esc_html_e( 'Display Frequency', 'banner-manager-pro' ); ?></h3>
                             <table class="widefat striped" style="max-width:700px;">
-                                <thead><tr><th>Option</th><th>Comportement</th></tr></thead>
+                                <thead><tr><th><?php esc_html_e( 'Option', 'banner-manager-pro' ); ?></th><th><?php esc_html_e( 'Behavior', 'banner-manager-pro' ); ?></th></tr></thead>
                                 <tbody>
-                                    <tr><td><strong>Chaque visite</strong></td><td>Le popup s'affiche à chaque chargement de page</td></tr>
-                                    <tr><td><strong>Par session</strong></td><td>Une seule fois par session navigateur</td></tr>
-                                    <tr><td><strong>Par jour</strong></td><td>Une fois toutes les 24 heures</td></tr>
-                                    <tr><td><strong>Par semaine</strong></td><td>Une fois tous les 7 jours</td></tr>
-                                    <tr><td><strong>Une seule fois</strong></td><td>Ne s'affiche plus jamais après la première fermeture</td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Every visit', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'The popup displays on every page load', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Per session', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Once per browser session', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Per day', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Once every 24 hours', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Per week', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Once every 7 days', 'banner-manager-pro' ); ?></td></tr>
+                                    <tr><td><strong><?php esc_html_e( 'Once only', 'banner-manager-pro' ); ?></strong></td><td><?php esc_html_e( 'Never displays again after the first dismissal', 'banner-manager-pro' ); ?></td></tr>
                                 </tbody>
                             </table>
 
-                            <h3 style="margin-top:20px;">Ciblage</h3>
+                            <h3 style="margin-top:20px;"><?php esc_html_e( 'Targeting', 'banner-manager-pro' ); ?></h3>
                             <ul style="list-style:disc;padding-left:20px;color:#374151;line-height:2;">
-                                <li><strong>Tout le site</strong> — rotation automatique entre les popups de même priorité</li>
-                                <li><strong>Tous les articles</strong> ou <strong>Toutes les pages</strong></li>
-                                <li><strong>Article spécifique</strong> — sélectionnez un article précis</li>
-                                <li><strong>Page spécifique</strong> — sélectionnez une page précise</li>
-                                <li><strong>Catégorie</strong> — s'affiche sur les articles de cette catégorie</li>
-                                <li><strong>Page d'accueil</strong> uniquement</li>
+                                <li><?php echo __( '<strong>Entire site</strong> — automatic rotation among popups with the same priority', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( '<strong>All posts</strong> or <strong>All pages</strong>', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( '<strong>Specific post</strong> — select a specific post', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( '<strong>Specific page</strong> — select a specific page', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( '<strong>Category</strong> — displays on posts in this category', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( '<strong>Homepage</strong> only', 'banner-manager-pro' ); ?></li>
                             </ul>
                         </div>
 
                         <div class="bmp-admin-section">
-                            <h2>Formats prédéfinis</h2>
+                            <h2><?php esc_html_e( 'Predefined Formats', 'banner-manager-pro' ); ?></h2>
                             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
                                 <div>
-                                    <h3 style="margin-top:0;">Bannières horizontales</h3>
+                                    <h3 style="margin-top:0;"><?php esc_html_e( 'Horizontal Banners', 'banner-manager-pro' ); ?></h3>
                                     <p style="color:#6b7280;">728×90, 970×90, 970×250, 468×60, 320×50</p>
-                                    <p><em>Idéal pour : en-tête, pied de page, entre les articles</em></p>
+                                    <p><em><?php esc_html_e( 'Ideal for: header, footer, between articles', 'banner-manager-pro' ); ?></em></p>
                                 </div>
                                 <div>
-                                    <h3 style="margin-top:0;">Bannières verticales</h3>
+                                    <h3 style="margin-top:0;"><?php esc_html_e( 'Vertical Banners', 'banner-manager-pro' ); ?></h3>
                                     <p style="color:#6b7280;">300×250, 300×600, 160×600, 120×600, 250×250</p>
-                                    <p><em>Idéal pour : sidebars</em></p>
+                                    <p><em><?php esc_html_e( 'Ideal for: sidebars', 'banner-manager-pro' ); ?></em></p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="bmp-admin-section">
-                            <h2>Ciblage par appareil</h2>
+                            <h2><?php esc_html_e( 'Device Targeting', 'banner-manager-pro' ); ?></h2>
                             <ul style="list-style:disc;padding-left:20px;color:#374151;line-height:2;">
-                                <li><strong>Desktop</strong> — uniquement sur les ordinateurs</li>
-                                <li><strong>Mobile</strong> — uniquement sur les smartphones et tablettes</li>
-                                <li><strong>Les 2</strong> — sur tous les appareils</li>
+                                <li><?php echo __( '<strong>Desktop</strong> — computers only', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( '<strong>Mobile</strong> — smartphones and tablets only', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( '<strong>Both</strong> — all devices', 'banner-manager-pro' ); ?></li>
                             </ul>
-                            <p style="color:#6b7280;margin-top:8px;font-size:13px;">Le ciblage utilise <code>wp_is_mobile()</code> pour détecter l'appareil.</p>
+                            <p style="color:#6b7280;margin-top:8px;font-size:13px;"><?php echo __( 'Targeting uses <code>wp_is_mobile()</code> to detect the device.', 'banner-manager-pro' ); ?></p>
                         </div>
 
                         <div class="bmp-admin-section">
-                            <h2>Fonctionnalités avancées</h2>
+                            <h2><?php esc_html_e( 'Advanced Features', 'banner-manager-pro' ); ?></h2>
                             <ul style="list-style:disc;padding-left:20px;color:#374151;line-height:2;">
-                                <li><strong>Duplication rapide</strong> — dupliquez une bannière ou un popup en un clic</li>
-                                <li><strong>Filtres admin</strong> — filtrez par statut, type, appareil, emplacement</li>
-                                <li><strong>Preview live</strong> — aperçu desktop/mobile dans l'éditeur</li>
-                                <li><strong>Multisite</strong> — compatible WordPress Multisite (MU)</li>
-                                <li><strong>Debug mode</strong> — ajoutez <code>?debug_bmp</code> à l'URL pour voir les bannières actives</li>
+                                <li><?php esc_html_e( 'Quick Duplicate — duplicate a banner or popup in one click', 'banner-manager-pro' ); ?></li>
+                                <li><?php esc_html_e( 'Admin Filters — filter by status, type, device, position', 'banner-manager-pro' ); ?></li>
+                                <li><?php esc_html_e( 'Live Preview — desktop/mobile preview in the editor', 'banner-manager-pro' ); ?></li>
+                                <li><?php esc_html_e( 'Multisite — compatible with WordPress Multisite (MU)', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( 'Debug mode — add <code>?debug_bmp</code> to the URL to see active banners', 'banner-manager-pro' ); ?></li>
                             </ul>
                         </div>
 
                         <div class="bmp-admin-section">
-                            <h2>Licence</h2>
+                            <h2><?php esc_html_e( 'License', 'banner-manager-pro' ); ?></h2>
                             <ul style="list-style:disc;padding-left:20px;color:#374151;line-height:2;">
-                                <li>Le plugin nécessite une <strong>clé de licence</strong> au format <code>BMP-XXXX-XXXX-XXXX</code></li>
-                                <li>La licence est validée automatiquement toutes les 72 heures</li>
-                                <li>Selon votre licence : <strong>mono-domaine</strong> ou <strong>multi-domaines</strong> (illimité)</li>
-                                <li>Les mises à jour sont automatiques via l'admin WordPress</li>
+                                <li><?php echo __( 'The plugin requires a <strong>license key</strong> in the format <code>BMP-XXXX-XXXX-XXXX</code>', 'banner-manager-pro' ); ?></li>
+                                <li><?php esc_html_e( 'The license is validated automatically every 72 hours', 'banner-manager-pro' ); ?></li>
+                                <li><?php echo __( 'Depending on your license: <strong>single-domain</strong> or <strong>multi-domain</strong> (unlimited)', 'banner-manager-pro' ); ?></li>
+                                <li><?php esc_html_e( 'Updates are automatic via the WordPress admin', 'banner-manager-pro' ); ?></li>
                             </ul>
                         </div>
 
                         <div class="bmp-admin-section" style="background:#fefce8;border-color:#fde68a;">
-                            <h2 style="border-color:#fde68a;">Support</h2>
-                            <p style="color:#374151;">Pour toute question ou problème :</p>
+                            <h2 style="border-color:#fde68a;"><?php esc_html_e( 'Support', 'banner-manager-pro' ); ?></h2>
+                            <p style="color:#374151;"><?php esc_html_e( 'For any questions or issues:', 'banner-manager-pro' ); ?></p>
                             <ul style="list-style:none;padding:0;line-height:2.2;">
-                                <li>Email : <a href="mailto:contact@khalid.digital">contact@khalid.digital</a></li>
-                                <li>GitHub : <a href="https://github.com/kabde/banner-manager-pro" target="_blank">github.com/kabde/banner-manager-pro</a></li>
+                                <li><?php esc_html_e( 'Email:', 'banner-manager-pro' ); ?> <a href="mailto:contact@khalid.digital">contact@khalid.digital</a></li>
+                                <li><?php esc_html_e( 'GitHub:', 'banner-manager-pro' ); ?> <a href="https://github.com/kabde/banner-manager-pro" target="_blank">github.com/kabde/banner-manager-pro</a></li>
                             </ul>
                         </div>
 
@@ -657,7 +660,7 @@ class BMP_Settings {
                 var key = $('#bmp-license-key').val().trim();
                 if (!key) return;
 
-                btn.prop('disabled', true).text('Activation...');
+                btn.prop('disabled', true).text('Activating...');
 
                 $.post(ajaxurl, {
                     action: 'bmp_activate_license',
@@ -669,18 +672,18 @@ class BMP_Settings {
                         setTimeout(function() { location.reload(); }, 1000);
                     } else {
                         $('#bmp-license-message').html('<div class="notice notice-error inline"><p>' + response.data + '</p></div>').show();
-                        btn.prop('disabled', false).text('Activer la licence');
+                        btn.prop('disabled', false).text('Activate License');
                     }
                 }).fail(function() {
-                    $('#bmp-license-message').html('<div class="notice notice-error inline"><p>Erreur de connexion.</p></div>').show();
-                    btn.prop('disabled', false).text('Activer la licence');
+                    $('#bmp-license-message').html('<div class="notice notice-error inline"><p>Connection error.</p></div>').show();
+                    btn.prop('disabled', false).text('Activate License');
                 });
             });
 
             $('#bmp-deactivate-btn').on('click', function() {
-                if (!confirm('Désactiver la licence sur ce domaine ?')) return;
+                if (!confirm('Deactivate the license on this domain?')) return;
                 var btn = $(this);
-                btn.prop('disabled', true).text('Désactivation...');
+                btn.prop('disabled', true).text('Deactivating...');
 
                 $.post(ajaxurl, {
                     action: 'bmp_deactivate_license',

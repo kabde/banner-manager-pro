@@ -1,4 +1,5 @@
 jQuery(function($) {
+    var __ = wp.i18n.__;
     var selectedImageUrl = $('#bmp_popup_image_preview img').first().attr('src') || '';
     var selectedVisualImageUrl = $('#bmp_popup_visual_image_preview img').first().attr('src') || '';
 
@@ -63,7 +64,7 @@ jQuery(function($) {
         var imageId = $('#bmp_popup_image_id').val();
         var imageUrl = selectedImageUrl || $('#bmp_popup_image_preview img').first().attr('src') || '';
         var link = safePreviewUrl($('#bmp_popup_image_link').val());
-        if (!imageId || !imageUrl) return '<div class="bmp-preview-empty">Aucune image sélectionnée.</div>';
+        if (!imageId || !imageUrl) return '<div class="bmp-preview-empty">' + __( 'No image selected.', 'banner-manager-pro' ) + '</div>';
         var image = '<img class="bmp-preview-image" src="' + escapeAttr(imageUrl) + '" alt="">';
         if (link) return '<a href="' + escapeAttr(link) + '" target="_blank" rel="noopener noreferrer">' + image + '</a>';
         return image;
@@ -71,13 +72,13 @@ jQuery(function($) {
 
     function htmlPreviewHtml() {
         var html = $('#bmp_popup_html').val();
-        if (!(html || '').trim()) return '<div class="bmp-preview-empty">Aucun code HTML.</div>';
+        if (!(html || '').trim()) return '<div class="bmp-preview-empty">' + __( 'No HTML code.', 'banner-manager-pro' ) + '</div>';
         return '<iframe class="bmp-preview-iframe" sandbox="allow-scripts allow-popups allow-forms" srcdoc="' + escapeAttr(html) + '"></iframe>';
     }
 
     function visualPreviewHtml() {
         var tpl = $('#bmp_popup_visual_tpl').val();
-        if (!tpl) return '<div class="bmp-preview-empty">Choose a template.</div>';
+        if (!tpl) return '<div class="bmp-preview-empty">' + __( 'Choose a template.', 'banner-manager-pro' ) + '</div>';
 
         var heading = escapeAttr($('#bmp_popup_visual_heading').val()) || 'Heading';
         var body = escapeAttr($('#bmp_popup_visual_body').val()) || 'Body text...';
@@ -177,7 +178,7 @@ jQuery(function($) {
         $('#bmp_popup_image_id').val(attachment.id);
         $('#bmp_popup_image_preview').html(
             '<img src="' + escapeAttr(imageUrl) + '" style="max-width:150px; height:auto; border:1px solid #ddd; margin:5px 0;" alt="">' +
-            '<br><button type="button" class="button button-small" id="bmp_popup_remove_image">Supprimer</button>'
+            '<br><button type="button" class="button button-small" id="bmp_popup_remove_image">' + __( 'Remove', 'banner-manager-pro' ) + '</button>'
         );
         updatePreview();
     }
@@ -204,12 +205,12 @@ jQuery(function($) {
     $('#bmp_popup_pick_image').on('click', function(e) {
         e.preventDefault();
         if (typeof wp === 'undefined' || typeof wp.media === 'undefined') {
-            alert('La bibliothèque média WordPress n\'est pas disponible');
+            alert( __( 'WordPress media library is not available.', 'banner-manager-pro' ) );
             return;
         }
         var frame = wp.media({
-            title: 'Choisir une image',
-            button: { text: 'Utiliser cette image' },
+            title: __( 'Choose an image', 'banner-manager-pro' ),
+            button: { text: __( 'Use this image', 'banner-manager-pro' ) },
             multiple: false
         });
         frame.on('select', function() {
@@ -221,7 +222,7 @@ jQuery(function($) {
 
     // Add remove button if image exists but no remove button
     if ($('#bmp_popup_image_id').val() && !$('#bmp_popup_remove_image').length) {
-        $('#bmp_popup_image_preview').append('<br><button type="button" class="button button-small" id="bmp_popup_remove_image">Supprimer</button>');
+        $('#bmp_popup_image_preview').append('<br><button type="button" class="button button-small" id="bmp_popup_remove_image">' + __( 'Remove', 'banner-manager-pro' ) + '</button>');
     }
 
     // Post display mode toggle
@@ -280,8 +281,8 @@ jQuery(function($) {
         e.preventDefault();
         if (typeof wp === 'undefined' || typeof wp.media === 'undefined') return;
         var frame = wp.media({
-            title: 'Choose Image',
-            button: { text: 'Use this image' },
+            title: __( 'Choose Image', 'banner-manager-pro' ),
+            button: { text: __( 'Use this image', 'banner-manager-pro' ) },
             multiple: false
         });
         frame.on('select', function() {

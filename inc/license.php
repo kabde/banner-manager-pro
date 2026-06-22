@@ -32,13 +32,13 @@ function bmp_activate_license( $key ) {
     // Rate limiting — max 5 attempts per minute
     $attempts = (int) get_transient( 'bmp_license_attempts' );
     if ( $attempts >= 5 ) {
-        return [ 'success' => false, 'message' => 'Trop de tentatives. Réessayez dans une minute.' ];
+        return [ 'success' => false, 'message' => __( 'Too many attempts. Try again in one minute.', 'banner-manager-pro' ) ];
     }
     set_transient( 'bmp_license_attempts', $attempts + 1, MINUTE_IN_SECONDS );
 
     $key = strtoupper( sanitize_text_field( trim( $key ) ) );
     if ( ! preg_match( '/^BMP-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/', $key ) ) {
-        return [ 'success' => false, 'message' => 'Format de licence invalide.' ];
+        return [ 'success' => false, 'message' => __( 'Invalid license format.', 'banner-manager-pro' ) ];
     }
 
     $response = wp_remote_post( BMP_API_URL . '/activate', [
@@ -53,7 +53,7 @@ function bmp_activate_license( $key ) {
 
     if ( is_wp_error( $response ) ) {
         error_log( '[BMP] License activation error: ' . $response->get_error_message() );
-        return [ 'success' => false, 'message' => 'Erreur de connexion: ' . $response->get_error_message() ];
+        return [ 'success' => false, 'message' => __( 'Connection error: ', 'banner-manager-pro' ) . $response->get_error_message() ];
     }
 
     $body = json_decode( wp_remote_retrieve_body( $response ), true );
@@ -66,10 +66,10 @@ function bmp_activate_license( $key ) {
             update_option( 'bmp_license_expires_at', sanitize_text_field( $body['expires_at'] ) );
         }
         set_transient( 'bmp_license_valid', 1, 72 * HOUR_IN_SECONDS );
-        return [ 'success' => true, 'message' => $body['message'] ?? 'Licence activée.' ];
+        return [ 'success' => true, 'message' => $body['message'] ?? __( 'License activated.', 'banner-manager-pro' ) ];
     }
 
-    return [ 'success' => false, 'message' => $body['message'] ?? 'Activation échouée.' ];
+    return [ 'success' => false, 'message' => $body['message'] ?? __( 'Activation failed.', 'banner-manager-pro' ) ];
 }
 
 /**
@@ -193,7 +193,8 @@ function bmp_admin_notice_no_license() {
 
     echo '<div class="notice notice-warning"><p>';
     echo '<strong>Banner Manager Pro</strong> — ';
-    echo 'Veuillez <a href="' . esc_url( admin_url( 'admin.php?page=bmp-settings' ) ) . '">activer votre licence</a> pour utiliser le plugin.';
+    /* translators: %s: URL to the settings page */
+    echo sprintf( __( 'Please <a href="%s">activate your license</a> to use the plugin.', 'banner-manager-pro' ), esc_url( admin_url( 'admin.php?page=bmp-settings' ) ) );
     echo '</p></div>';
 }
 add_action( 'admin_notices', 'bmp_admin_notice_no_license' );
@@ -206,9 +207,11 @@ function bmp_admin_notice_expiring() {
     if ( $days > 14 ) return;
 
     if ( $days <= 0 ) {
-        echo '<div class="notice notice-error"><p><strong>Banner Manager Pro</strong> — Votre licence a expiré. <a href="' . esc_url( admin_url( 'admin.php?page=bmp-settings' ) ) . '">Renouveler</a></p></div>';
+        /* translators: %s: URL to the settings page */
+        echo '<div class="notice notice-error"><p><strong>Banner Manager Pro</strong> — ' . sprintf( __( 'Your license has expired. <a href="%s">Renew</a>', 'banner-manager-pro' ), esc_url( admin_url( 'admin.php?page=bmp-settings' ) ) ) . '</p></div>';
     } else {
-        echo '<div class="notice notice-warning"><p><strong>Banner Manager Pro</strong> — Votre licence expire dans ' . $days . ' jour' . ($days > 1 ? 's' : '') . '. <a href="' . esc_url( admin_url( 'admin.php?page=bmp-settings' ) ) . '">Voir</a></p></div>';
+        /* translators: 1: number of days, 2: URL to the settings page */
+        echo '<div class="notice notice-warning"><p><strong>Banner Manager Pro</strong> — ' . sprintf( _n( 'Your license expires in %1$d day. <a href="%2$s">View</a>', 'Your license expires in %1$d days. <a href="%2$s">View</a>', $days, 'banner-manager-pro' ), $days, esc_url( admin_url( 'admin.php?page=bmp-settings' ) ) ) . '</p></div>';
     }
 }
 add_action( 'admin_notices', 'bmp_admin_notice_expiring' );
@@ -218,7 +221,7 @@ add_action( 'admin_notices', 'bmp_admin_notice_expiring' );
  */
 function bmp_ajax_activate_license() {
     check_ajax_referer( 'bmp_license_nonce', 'nonce' );
-    if ( ! current_user_can( 'manage_options' ) ) wp_send_json_error( 'Permission refusée.' );
+    if ( ! current_user_can( 'manage_options' ) ) wp_send_json_error( __( 'Permission denied.', 'banner-manager-pro' ) );
 
     $key = isset( $_POST['license_key'] ) ? sanitize_text_field( wp_unslash( $_POST['license_key'] ) ) : '';
     $result = bmp_activate_license( $key );
@@ -235,10 +238,10 @@ add_action( 'wp_ajax_bmp_activate_license', 'bmp_ajax_activate_license' );
 
 function bmp_ajax_deactivate_license() {
     check_ajax_referer( 'bmp_license_nonce', 'nonce' );
-    if ( ! current_user_can( 'manage_options' ) ) wp_send_json_error( 'Permission refusée.' );
+    if ( ! current_user_can( 'manage_options' ) ) wp_send_json_error( __( 'Permission denied.', 'banner-manager-pro' ) );
 
     bmp_deactivate_license();
-    wp_send_json_success( 'Licence désactivée.' );
+    wp_send_json_success( __( 'License deactivated.', 'banner-manager-pro' ) );
 }
 add_action( 'wp_ajax_bmp_deactivate_license', 'bmp_ajax_deactivate_license' );
 
