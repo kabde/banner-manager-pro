@@ -152,7 +152,7 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     color: #fff;
-    font-size: 20px;
+    font-size: 14px;
     line-height: 1;
     text-align: center;
     cursor: pointer;
@@ -162,7 +162,6 @@
     justify-content: center;
     padding: 0;
     margin: 0;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     min-width: 36px;
     min-height: 36px;
     max-width: 36px;
@@ -174,6 +173,10 @@
     font-weight: 400;
     box-shadow: none;
     outline: none;
+}
+.bmp-popup .bmp-popup-close svg {
+    display: block;
+    flex-shrink: 0;
 }
 .bmp-popup .bmp-popup-close:hover {
     background: rgba(255, 255, 255, 0.3);
@@ -903,6 +906,26 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     text-decoration: none;
     color: #fff;
+}
+
+/* Animated CTA — subtle pulse glow */
+.bmp-popup .bmp-visual__cta.bmp-cta-animated,
+.bmp-popup .bmp-popup-post-btn.bmp-cta-animated {
+    animation: bmpCtaPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.bmp-popup .bmp-visual__cta.bmp-cta-animated:hover,
+.bmp-popup .bmp-popup-post-btn.bmp-cta-animated:hover {
+    animation: none;
+}
+@keyframes bmpCtaPulse {
+    0%, 100% {
+        filter: brightness(1);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.15);
+    }
+    50% {
+        filter: brightness(1.12);
+        box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.12);
+    }
 }
 
 /* ── SVG icons shared ── */
