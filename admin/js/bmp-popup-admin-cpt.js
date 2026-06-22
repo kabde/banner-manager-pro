@@ -271,7 +271,7 @@ jQuery(function($) {
     $('#bmp_popup_visual_heading, #bmp_popup_visual_body, #bmp_popup_visual_cta_text, #bmp_popup_visual_cta_link, #bmp_popup_visual_video_url, #bmp_popup_visual_coupon, #bmp_popup_visual_badge, #bmp_popup_visual_price, #bmp_popup_visual_author, #bmp_popup_visual_role').on('input', updatePreview);
 
     // Visual image picker
-    $(document).on('click', '#bmp_visual_pick_image', function(e) {
+    $(document).on('click', '#bmp_popup_visual_pick_image', function(e) {
         e.preventDefault();
         if (typeof wp === 'undefined' || typeof wp.media === 'undefined') return;
         var frame = wp.media({
@@ -289,14 +289,14 @@ jQuery(function($) {
             $('#bmp_popup_visual_image_preview').html(
                 '<img src="' + escapeAttr(imgUrl) + '" style="max-width:150px;height:auto;border:1px solid #ddd;margin:5px 0;" alt="">'
             );
-            $('#bmp_visual_remove_image').show();
+            $('#bmp_popup_visual_remove_image').show();
             updatePreview();
         });
         frame.open();
     });
 
     // Visual image remove
-    $(document).on('click', '#bmp_visual_remove_image', function(e) {
+    $(document).on('click', '#bmp_popup_visual_remove_image', function(e) {
         e.preventDefault();
         selectedVisualImageUrl = '';
         $('#bmp_popup_visual_image_id').val('');
