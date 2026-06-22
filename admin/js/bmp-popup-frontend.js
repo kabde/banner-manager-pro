@@ -166,4 +166,20 @@
         }
         document.addEventListener('mouseleave', checkExit);
     }
+
+    // ── Coupon copy button (Visual template) ──
+    document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.bmp-visual__coupon-copy');
+        if (!btn) return;
+        var code = btn.getAttribute('data-code');
+        if (!code) return;
+        navigator.clipboard.writeText(code).then(function() {
+            btn.textContent = 'Copied!';
+            btn.classList.add('is-copied');
+            setTimeout(function() {
+                btn.textContent = 'Copy';
+                btn.classList.remove('is-copied');
+            }, 2000);
+        });
+    });
 })();
