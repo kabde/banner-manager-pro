@@ -258,9 +258,9 @@ jQuery(function($) {
         $('#bmp_popup_visual_tpl').val(tpl);
         $('#bmp-visual-customize').show();
 
-        // Show/hide template-specific fields
-        $('.bmp-visual-field').each(function() {
-            var templates = ($(this).data('templates') || '').split(',');
+        // Show/hide template-specific fields (skip shared fields without data-templates)
+        $('.bmp-visual-field[data-templates]').each(function() {
+            var templates = $(this).data('templates').split(',');
             $(this).toggle(templates.indexOf(tpl) !== -1);
         });
 
@@ -309,8 +309,8 @@ jQuery(function($) {
     function initVisualFields() {
         var tpl = $('#bmp_popup_visual_tpl').val();
         if (tpl) {
-            $('.bmp-visual-field').each(function() {
-                var templates = ($(this).data('templates') || '').split(',');
+            $('.bmp-visual-field[data-templates]').each(function() {
+                var templates = $(this).data('templates').split(',');
                 $(this).toggle(templates.indexOf(tpl) !== -1);
             });
         }
