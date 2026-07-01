@@ -154,7 +154,28 @@ jQuery(function($) {
         $('#bmp_image_preview').append('<br><button type="button" class="button button-small" id="bmp_remove_image">Supprimer</button>');
     }
 
+    // Display on → show/hide targeting fields
+    function updateBannerDisplayFields() {
+        var display = $('#bmp_display_on').val();
+        $('#bmp-banner-specific-post-row').toggle(display === 'specific_post');
+        $('#bmp-banner-specific-page-row').toggle(display === 'specific_page');
+        $('#bmp-banner-category-row').toggle(display === 'category');
+    }
+
+    $('#bmp_display_on').on('change', updateBannerDisplayFields);
+
+    // Multi-select search filter for checklists (banners)
+    $(document).on('input', '.bmp-multiselect-search', function() {
+        var query = $(this).val().toLowerCase();
+        var targetId = $(this).data('target');
+        $('#' + targetId).find('.bmp-checklist-item').each(function() {
+            var label = $(this).text().toLowerCase();
+            $(this).toggle(label.indexOf(query) !== -1);
+        });
+    });
+
     updateTypeFields();
     updateCustomDimensions();
     updateEmptyStates();
+    updateBannerDisplayFields();
 });

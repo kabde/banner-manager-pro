@@ -58,6 +58,16 @@ jQuery(function($) {
         $('#bmp-popup-category-row').toggle(display === 'category');
     }
 
+    // Multi-select search filter for checklists
+    $(document).on('input', '.bmp-multiselect-search', function() {
+        var query = $(this).val().toLowerCase();
+        var targetId = $(this).data('target');
+        $('#' + targetId).find('.bmp-checklist-item').each(function() {
+            var label = $(this).text().toLowerCase();
+            $(this).toggle(label.indexOf(query) !== -1);
+        });
+    });
+
     // ── Preview functions ──
 
     function imagePreviewHtml() {
