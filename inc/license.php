@@ -320,6 +320,13 @@ function bmp_download_premium() {
 function bmp_load_premium_code() {
     if ( ! bmp_is_licensed() ) return;
 
+    // Force re-download when plugin version changes (e.g. after auto-update)
+    $last_version = get_option( 'bmp_premium_version', '' );
+    if ( $last_version !== BMP_VERSION ) {
+        delete_transient( 'bmp_premium_fresh' );
+        update_option( 'bmp_premium_version', BMP_VERSION );
+    }
+
     if ( false === get_transient( 'bmp_premium_fresh' ) ) {
         $result = bmp_download_premium();
         error_log( '[BMP] Premium download triggered, result: ' . ( $result ? 'OK' : 'FAIL' ) );
