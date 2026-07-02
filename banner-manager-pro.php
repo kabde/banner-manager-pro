@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Banner Manager Pro
  * Description: Professional banner management with image, HTML and popup support, placement and device targeting.
- * Version:     3.3.0
+ * Version:     3.4.0
  * Author:      Abderrahim KHALID
  * Text Domain: banner-manager-pro
  * Network:     true
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'BMP_VERSION', '3.3.0' );
+define( 'BMP_VERSION', '3.4.0' );
 define( 'BMP_FILE', __FILE__ );
 define( 'BMP_BASENAME', plugin_basename( __FILE__ ) );
 define( 'BMP_PATH', plugin_dir_path( __FILE__ ) );
